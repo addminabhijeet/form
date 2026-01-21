@@ -125,9 +125,7 @@
                                 {{ isset($invoice) ? 'Update Invoice' : 'Submit Invoice' }}
                             </button>
                         </div>
-
                     </form>
-
                 </div>
             </div>
         </div>
