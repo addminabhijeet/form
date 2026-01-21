@@ -9,7 +9,7 @@
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>Invoice List</h3>
-        <a href="{{ route('invoice.form') }}" class="btn btn-primary">Create Invoice</a>
+        <a href="{{ route('home') }}" class="btn btn-primary">Create Invoice</a>
     </div>
 
     <table class="table table-bordered table-hover align-middle">
