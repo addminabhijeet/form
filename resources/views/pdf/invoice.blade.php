@@ -323,10 +323,10 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
         filename: 'document.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: {
-            scale: 2,
+            scale: 6,
             useCORS: true,
-            width: 594,   // A4 width in px (210mm @ 96dpi)
-            height: 523  // A4 height in px (297mm @ 96dpi)
+            width: 794,   // A4 width in px (210mm @ 96dpi)
+            height: 1123  // A4 height in px (297mm @ 96dpi)
         },
         jsPDF: {
             unit: 'mm',
