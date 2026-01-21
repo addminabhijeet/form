@@ -20,7 +20,12 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return view('invoice_form');
+        // Generate unique 6-digit invoice number
+        do {
+            $invoiceNumber = mt_rand(100000, 999999); // 6-digit random number
+        } while (Invoice::where('invoice_number', $invoiceNumber)->exists());
+
+        return view('invoice_form', compact('invoiceNumber'));
     }
 
     public function store(Request $request)
