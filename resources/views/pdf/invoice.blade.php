@@ -319,21 +319,76 @@ document.getElementById("printBtn").addEventListener("click", function() {
 document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
-    domtoimage.toJpeg(element, { quality: 1, bgcolor: '#fff' })
-        .then(function (dataUrl) {
-            // Trigger download
-            const link = document.createElement('a');
-            link.href = dataUrl;
-            link.download = 'page-image.jpg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        })
-        .catch(function (error) {
-            console.error('oops, something went wrong!', error);
-        });
+    // --- Temporarily apply print CSS to the element ---
+    const printStyles = `
+        * {
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        body, .page-container {
+            background: #fff !important;
+        }
+        h1,h2,h3,h4,h5,h6,p,label,span,small,th,td {
+            color: #000 !important;
+            font-weight: 700 !important;
+        }
+        .card, .card-body {
+            background: #fff !important;
+            border: 2px solid #000 !important;
+            color: #000 !important;
+        }
+        table {
+            border-collapse: collapse !important;
+            width: 100% !important;
+        }
+        table, th, td {
+            border: 2px solid #000 !important;
+            background: #fff !important;
+            font-weight: 700 !important;
+        }
+        .badge {
+            background: #ddd !important;
+            color: #000 !important;
+            font-weight: 800 !important;
+            border: 2px solid #000 !important;
+        }
+        iconify-icon, i {
+            color: #000 !important;
+            filter: grayscale(100%) contrast(200%) !important;
+        }
+    `;
+
+    const styleTag = document.createElement('style');
+    styleTag.id = 'pdfPrintStyle';
+    styleTag.innerHTML = printStyles;
+    document.head.appendChild(styleTag);
+
+    // --- html2pdf options ---
+    const opt = {
+        margin:       [15, 15, 15, 15],
+        filename:     'page.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#fff',
+            logging: false
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // --- Generate PDF ---
+    html2pdf().set(opt).from(element).save().finally(() => {
+        // Remove temporary print styles after PDF is generated
+        const tempStyle = document.getElementById('pdfPrintStyle');
+        if (tempStyle) tempStyle.remove();
+    });
 });
 </script>
+
 
 
 
