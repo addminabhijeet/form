@@ -110,7 +110,7 @@
     </div>
 
     <div class="text-center">
-        <a href="{{ route('home') }}" class="btn btn-primary">Invoice List</a>
+        <a href="{{ route('invoice.list') }}" class="btn btn-primary">Invoice List</a>
     </div>
 
     <!-- Bootstrap JS Bundle -->
