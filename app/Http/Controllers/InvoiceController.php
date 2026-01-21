@@ -14,7 +14,8 @@ class InvoiceController extends Controller
 
     public function list()
     {
-        return view('list');
+        $invoices = Invoice::orderBy('created_at', 'desc')->paginate(10);
+        return view('list', compact('invoices'));
     }
 
     public function create()
