@@ -9,7 +9,7 @@ class InvoiceController extends Controller
 {
     public function home()
     {
-        return view('home');
+        return view('form');
     }
     public function create()
     {
