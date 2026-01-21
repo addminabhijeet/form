@@ -319,16 +319,26 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
     const options = {
-        margin: 10,
+        margin: 0, // same as @page margin: 0
         filename: 'document.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            width: 794,   // A4 width in px (210mm @ 96dpi)
+            height: 1123  // A4 height in px (297mm @ 96dpi)
+        },
+        jsPDF: {
+            unit: 'mm',
+            format: [210, 297], // Exact A4
+            orientation: 'portrait'
+        }
     };
 
     html2pdf().set(options).from(element).save();
 });
 </script>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
