@@ -44,7 +44,7 @@
                                 Edit
                             </a>
 
-                            <a id="downloadPdfLink" href="{{ route('invoice.pdf', $invoice->id ?? '') }}" download
+                            <a id="downloadPdfLink" href="{{ route('invoice.download', $invoice->id ?? '') }}" download
                                 style="display:none;">Download
                             </a>
 
