@@ -42,75 +42,35 @@
     </style>
         <style>
 @media print {
-    /* --- Page setup --- */
+
+    /* Define A4 page size */
     @page {
-        size: A4 portrait;
-        margin: 15mm;
+        size: A4;
+        margin: 0;
     }
 
     body * {
-        visibility: hidden; /* hide everything by default */
+        visibility: hidden; /* Hide everything by default */
     }
 
     .page-container,
     .page-container * {
-        visibility: visible; /* show only page-container */
+        visibility: visible; /* Show only page-container and its children */
     }
 
     .page-container {
         position: absolute;
         left: 0;
         top: 0;
+
+        /* A4 dimensions */
         width: 210mm;
         height: 297mm;
+
         margin: 0;
         padding: 0;
-        background: #fff !important;
-    }
-
-    /* --- Black & White Styling --- */
-    * {
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    h1,h2,h3,h4,h5,h6,p,label,span,small,th,td {
-        font-weight: 700 !important;
-        color: #000 !important;
-    }
-
-    table {
-        border-collapse: collapse !important;
-        width: 100% !important;
-    }
-
-    table, th, td {
-        border: 2px solid #000 !important;
-        background: #fff !important;
-    }
-
-    .card, .card-body {
-        background: #fff !important;
-        color: #000 !important;
-        border: 2px solid #000 !important;
-    }
-
-    .badge {
-        background: #ddd !important;
-        color: #000 !important;
-        font-weight: 800 !important;
-        border: 2px solid #000 !important;
-    }
-
-    iconify-icon, i {
-        color: #000 !important;
-        filter: grayscale(100%) contrast(200%) !important;
     }
 }
-
 
 </style>
     <style class="shared-css" type="text/css" >
