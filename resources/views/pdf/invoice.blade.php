@@ -126,6 +126,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </head>
 <body>
 <button id="printBtn">Print PDF</button>
+<button id="downloadBtn">Download PDF</button>
 <div class="page-container">
 
 <section class="page" style="width: 909px; height: 1286px;" aria-label="Page 1">
@@ -313,6 +314,30 @@ document.getElementById("printBtn").addEventListener("click", function() {
     });
 });
 </script>
+<script>
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    const pageContainer = document.querySelector(".page-container");
+
+    // Hide all other elements
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = 'none';
+        }
+    });
+
+    // Trigger browser PDF save dialog
+    window.print();
+
+    // Restore page
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = '';
+        }
+    });
+});
+</script>
+
 
 </body>
 </html>
