@@ -126,6 +126,12 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </head>
 <body>
 <button id="downloadBtn">Download</button>
+<a id="downloadPdfLink"
+   href="{{ route('invoice.download', $invoice->id) }}"
+   download
+   style="display:none;">
+</a>
+
 <div class="page-container">
 
 <section class="page" style="width: 909px; height: 1286px;" aria-label="Page 1">
@@ -316,6 +322,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     document.getElementById("downloadPdfLink").click();
 });
 </script>
+
 
 
 </body>
