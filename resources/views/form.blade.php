@@ -109,6 +109,11 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Invoice List</h3>
+        <a href="{{ route('home') }}" class="btn btn-primary">Create Invoice</a>
+    </div>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
