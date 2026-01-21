@@ -82,6 +82,11 @@
                             <option value="career_acceleration">Career Acceleration</option>
                         </select>
                     </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Invoice</button>
+                    </div>
+
                 </form>
             </div>
         </div>
