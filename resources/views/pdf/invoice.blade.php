@@ -137,9 +137,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:39px;bottom:616px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;">************************ </span>
-<span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice #{{ $invoice->invoice_number }}</span>
-<span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date:{{ $invoice->invoice_date }}</span>
-<span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date:{{ $invoice->due_date }}</span>
+<span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice # {{ $invoice->invoice_number }}</span>
+<span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date: {{ $invoice->invoice_date }}</span>
+<span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date: {{ $invoice->due_date }}</span>
 <span class="t s0" style="left:178px;bottom:1143px;letter-spacing:0.12px;"></span>
 <span class="t s0" style="left:178px;bottom:1124px;letter-spacing:0.12px;"></span>
 <span class="t s0" style="left:56px;bottom:1008px;letter-spacing:0.18px;">NORYAAN PRIVATE LIMITED </span>
