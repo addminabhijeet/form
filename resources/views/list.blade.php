@@ -44,8 +44,8 @@
                                 Edit
                             </a>
 
-                            <a id="downloadPdfLink" href="{{ route('invoice.download', $invoice->id ?? '') }}" download
-                                style="display:none;">Download
+                            <a id="downloadPdfLink" href="{{ route('invoice.download', $invoice->id ?? '') }}" download>
+                                Download
                             </a>
 
                             <form action="{{ route('invoice.delete', $invoice->id) }}" method="POST" class="d-inline"
