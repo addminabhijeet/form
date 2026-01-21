@@ -25,7 +25,7 @@ class InvoiceController extends Controller
             $invoiceNumber = mt_rand(100000, 999999); // 6-digit random number
         } while (Invoice::where('invoice_number', $invoiceNumber)->exists());
 
-        return view('invoice_form', compact('invoiceNumber'));
+        return view('invoice', compact('invoiceNumber'));
     }
 
     public function store(Request $request)
