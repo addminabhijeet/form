@@ -125,13 +125,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 
 </head>
 <body>
-<button id="downloadBtn">Download</button>
-<a id="downloadPdfLink"
-   href="{{ route('invoice.download', $invoice->id) }}"
-   download
-   style="display:none;">
-</a>
-
+<button id="printBtn">Print PDF</button>
 <div class="page-container">
 
 <section class="page" style="width: 909px; height: 1286px;" aria-label="Page 1">
@@ -297,10 +291,10 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </script>
 
 <script>
-/* ===== EXISTING PRINT CODE (UNCHANGED) ===== */
 document.getElementById("printBtn").addEventListener("click", function() {
     const pageContainer = document.querySelector(".page-container");
 
+    // Hide all other elements on the page (including the print button)
     const bodyChildren = Array.from(document.body.children);
     bodyChildren.forEach(el => {
         if (el !== pageContainer) {
@@ -308,22 +302,17 @@ document.getElementById("printBtn").addEventListener("click", function() {
         }
     });
 
+    // Print only the page-container
     window.print();
 
+    // Restore original display
     bodyChildren.forEach(el => {
         if (el !== pageContainer) {
             el.style.display = '';
         }
     });
 });
-
-/* ===== NEW DOWNLOAD LOGIC (ADDED) ===== */
-document.getElementById("downloadBtn").addEventListener("click", function () {
-    document.getElementById("downloadPdfLink").click();
-});
 </script>
-
-
 
 </body>
 </html>
