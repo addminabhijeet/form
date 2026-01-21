@@ -316,28 +316,22 @@ document.getElementById("printBtn").addEventListener("click", function() {
 </script>
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    const pageContainer = document.querySelector(".page-container");
+    const element = document.querySelector(".page-container");
 
-    // Hide all other elements
-    const bodyChildren = Array.from(document.body.children);
-    bodyChildren.forEach(el => {
-        if (el !== pageContainer) {
-            el.style.display = 'none';
-        }
-    });
+    const options = {
+        margin: 10,
+        filename: 'document.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
 
-    // Trigger browser PDF save dialog
-    window.print();
-
-    // Restore page
-    bodyChildren.forEach(el => {
-        if (el !== pageContainer) {
-            el.style.display = '';
-        }
-    });
+    html2pdf().set(options).from(element).save();
 });
 </script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 </body>
 </html>
