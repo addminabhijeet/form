@@ -36,7 +36,15 @@
                 <td>
                     <a href="{{ route('invoice.pdf', $invoice->id) }}"
                        class="btn btn-sm btn-success">
-                        View PDF
+                        View Invoice
+                    </a>
+                    <a href="{{ route('invoice.pdf', $invoice->id) }}"
+                       class="btn btn-sm btn-success">
+                        Edit Invoice
+                    </a>
+                    <a href="{{ route('invoice.pdf', $invoice->id) }}"
+                       class="btn btn-sm btn-success">
+                        Delete Invoice
                     </a>
                 </td>
             </tr>
