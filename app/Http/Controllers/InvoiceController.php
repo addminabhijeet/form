@@ -43,8 +43,10 @@ class InvoiceController extends Controller
     }
 
 
-    public function pdf()
+    public function pdf($id)
     {
-        return view('pdf.invoice');
+        $invoice = Invoice::findOrFail($id);
+
+        return view('pdf.invoice', compact('invoice'));
     }
 }
