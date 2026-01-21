@@ -319,18 +319,23 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
     const options = {
-        margin: 0, // same as @page margin: 0
+        margin: 0,
         filename: 'document.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            width: 794,   // A4 width in px (210mm @ 96dpi)
-            height: 1123  // A4 height in px (297mm @ 96dpi)
+
+        image: {
+            type: 'jpeg',
+            quality: 1
         },
+
+        html2canvas: {
+            scale: 1,
+            useCORS: true,
+            scrollY: 0
+        },
+
         jsPDF: {
             unit: 'mm',
-            format: [210, 297], // Exact A4
+            format: [210, 297], 
             orientation: 'portrait'
         }
     };
@@ -338,6 +343,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     html2pdf().set(options).from(element).save();
 });
 </script>
+
 
 
 
