@@ -318,45 +318,26 @@ document.getElementById("printBtn").addEventListener("click", function() {
 document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
-    // Store original styles
-    const originalTransform = element.style.transform;
-    const originalOrigin = element.style.transformOrigin;
-
-    // 🔽 REAL size reduction (adjust 0.9 → 0.85 if needed)
-    element.style.transform = "scale(0.9)";
-    element.style.transformOrigin = "top left";
-
     const options = {
-        margin: 0,
+        margin: 0, // same as @page margin: 0
         filename: 'document.pdf',
-
-        image: {
-            type: 'jpeg',
-            quality: 1
-        },
-
+        image: { type: 'jpeg', quality: 1 },
         html2canvas: {
-            scale: 2, // keep quality high
+            scale: 2,
             useCORS: true,
-            scrollY: 0
+            width: 494,   // A4 width in px (210mm @ 96dpi)
+            height: 1123  // A4 height in px (297mm @ 96dpi)
         },
-
         jsPDF: {
             unit: 'mm',
-            format: [210, 297], // A4
+            format: [210, 297], // Exact A4
             orientation: 'portrait'
         }
     };
 
-    html2pdf().set(options).from(element).save().then(() => {
-        // Restore original styles
-        element.style.transform = originalTransform;
-        element.style.transformOrigin = originalOrigin;
-    });
+    html2pdf().set(options).from(element).save();
 });
 </script>
-
-
 
 
 
