@@ -137,9 +137,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:39px;bottom:616px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;">************************ </span>
-<span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice# </span>
-<span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date </span>
-<span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date </span>
+<span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice #{{ $invoice->invoice_number }}</span>
+<span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date:{{ $invoice->invoice_date }}</span>
+<span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date:{{ $invoice->due_date }}</span>
 <span class="t s0" style="left:178px;bottom:1143px;letter-spacing:0.12px;">********** </span>
 <span class="t s0" style="left:178px;bottom:1124px;letter-spacing:0.12px;">**-**-**** </span>
 <span class="t s0" style="left:56px;bottom:1008px;letter-spacing:0.18px;">NORYAAN PRIVATE LIMITED </span>
@@ -150,9 +150,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:56px;bottom:905px;letter-spacing:0.14px;">+91 9147704137 </span>
 <span class="t s0" style="left:56px;bottom:884px;letter-spacing:0.17px;">www.noryaan.com </span>
 <span class="t s0" style="left:56px;bottom:863px;letter-spacing:0.15px;">GSTIN : NULL </span><span class="t s0" style="left:288px;bottom:863px;letter-spacing:0.16px;">PAN : AAYFN8278K </span>
-<span class="t s0" style="left:491px;bottom:1008px;letter-spacing:0.12px;">******************* </span>
-<span class="t s0" style="left:491px;bottom:987px;letter-spacing:0.12px;">******************* </span>
-<span class="t s0" style="left:491px;bottom:966px;letter-spacing:0.12px;">******************* </span>
+<span class="t s0" style="left:491px;bottom:1008px;letter-spacing:0.12px;">{{ $invoice->candidate_name }}</span>
+<span class="t s0" style="left:491px;bottom:987px;letter-spacing:0.12px;">{{ $invoice->candidate_email }}</span>
+<span class="t s0" style="left:491px;bottom:966px;letter-spacing:0.12px;">{{ $invoice->candidate_address }}</span>
 <span class="t s0" style="left:491px;bottom:946px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:491px;bottom:925px;letter-spacing:0.12px;">************************ </span>
 <span class="t s0" style="left:491px;bottom:905px;letter-spacing:0.12px;">************************ </span>
