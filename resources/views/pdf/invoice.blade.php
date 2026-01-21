@@ -318,26 +318,25 @@ document.getElementById("printBtn").addEventListener("click", function() {
 document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
-    const options = {
-        margin: 0, // same as @page margin: 0
-        filename: 'document.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-            scale: 1,
-            useCORS: true,
-            width: 794,   // A4 width in px (210mm @ 96dpi)
-            height: 1123  // A4 height in px (297mm @ 96dpi)
-        },
-        jsPDF: {
-            unit: 'mm',
-            format: [210, 297], // Exact A4
-            orientation: 'portrait'
-        }
-    };
+    html2canvas(element, {
+        scale: 2,         // increase for higher quality
+        useCORS: true,
+        scrollY: 0
+    }).then(canvas => {
+        // Convert canvas to image URL
+        const imgData = canvas.toDataURL('image/jpeg', 1.0); // JPEG 100% quality
 
-    html2pdf().set(options).from(element).save();
+        // Create temporary link to trigger download
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'document.jpg'; // file name
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
 });
 </script>
+
 
 
 
