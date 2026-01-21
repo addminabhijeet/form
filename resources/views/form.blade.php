@@ -57,7 +57,7 @@
                             <div class="col-md-6">
                                 <label for="invoice_number" class="form-label">Invoice Number</label>
                                 <input type="text" class="form-control" id="invoice_number" name="invoice_number"
-                                    value="{{ $invoiceNumber ?? '' }}" readonly required>
+                                    value="{{ $invoiceNumber ?? '' }}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="invoice_date" class="form-label">Invoice Date</label>
