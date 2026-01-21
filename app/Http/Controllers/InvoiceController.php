@@ -22,10 +22,11 @@ class InvoiceController extends Controller
     {
         // Generate unique 6-digit invoice number
         do {
-            $invoiceNumber = mt_rand(100000, 999999); // 6-digit random number
+            $invoiceNumber = mt_rand(100000, 999999);
         } while (Invoice::where('invoice_number', $invoiceNumber)->exists());
 
-        return view('invoice', compact('invoiceNumber'));
+        // Pass the variable to the correct view
+        return view('form', compact('invoiceNumber')); // <-- make sure this matches your Blade file
     }
 
     public function store(Request $request)
