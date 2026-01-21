@@ -317,72 +317,88 @@ document.getElementById("printBtn").addEventListener("click", function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.9.0/dist/dom-to-image-more.min.js"></script>
 <script>
-document.getElementById("downloadBtn").addEventListener("click", function () {
+document.getElementById("downloadBtn").addEventListener("click", async function () {
+
     const element = document.querySelector(".page-container");
 
-    // --- Inject PRINT-ONLY CSS (same as provided) ---
-    const printStyles = `
-        @media print {
+    // ✅ Clone element for isolated rendering
+    const clonedElement = element.cloneNode(true);
 
-            @page {
-                size: A4;
-                margin: 0;
-            }
+    // ✅ Minimal print isolation (NOT style matching)
+    const printStyle = document.createElement("style");
+    printStyle.textContent = `
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
 
-            body * {
-                visibility: hidden !important;
-            }
+        body {
+            margin: 0 !important;
+            background: #fff !important;
+        }
 
-            .page-container,
-            .page-container * {
-                visibility: visible !important;
-            }
-
-            .page-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 210mm;
-                height: 297mm;
-                margin: 0;
-                padding: 0;
-                background: #fff !important;
-            }
+        .page-container {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            padding: 0;
         }
     `;
+    clonedElement.prepend(printStyle);
 
-    const styleTag = document.createElement("style");
-    styleTag.id = "pdfPrintStyle";
-    styleTag.innerHTML = printStyles;
-    document.head.appendChild(styleTag);
+    // ✅ Attach clone to DOM (critical for html2canvas accuracy)
+    clonedElement.style.position = "fixed";
+    clonedElement.style.left = "-9999px";
+    document.body.appendChild(clonedElement);
 
-    // --- html2pdf options (UNCHANGED LOGIC) ---
+    // ✅ Allow layout & assets to settle
+    await new Promise(resolve => setTimeout(resolve, 10));
+
+    // ✅ A4 pixel dimensions
+    const a4WidthPx = 1175;
+    const a4HeightPx = Math.round(a4WidthPx * 1.4142);
+
+    // ✅ Convert Iconify icons → images
+    clonedElement.querySelectorAll("iconify-icon").forEach(icon => {
+        const img = document.createElement("img");
+        const iconName = icon.getAttribute("icon");
+        img.src = `https://api.iconify.design/${iconName}.svg`;
+        img.width = 34;
+        img.height = 34;
+        icon.replaceWith(img);
+    });
+
+    // ✅ html2pdf options (logic-aligned)
     const opt = {
         margin: [0, 0, 0, 0],
         filename: 'page.pdf',
-        image: { type: 'jpeg', quality: 1 },
+        image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
-            scale: 2,
+            scale: 3,
             useCORS: true,
-            backgroundColor: '#ffffff',
+            scrollY: 0,
+            backgroundColor: "#ffffff",
             logging: false,
-            scrollY: 0
+            letterRendering: true
         },
         jsPDF: {
-            unit: 'mm',
-            format: 'a4',
+            unit: 'px',
+            format: [a4WidthPx, a4HeightPx],
             orientation: 'portrait'
+        },
+        pagebreak: {
+            mode: ['avoid-all', 'css', 'legacy']
         }
     };
 
-    // --- Generate PDF ---
-    html2pdf().set(opt).from(element).save().finally(() => {
-        // Cleanup injected print styles
-        const tempStyle = document.getElementById("pdfPrintStyle");
-        if (tempStyle) tempStyle.remove();
-    });
+    // ✅ Generate PDF
+    await html2pdf().set(opt).from(clonedElement).save();
+
+    // ✅ Cleanup
+    document.body.removeChild(clonedElement);
 });
 </script>
+
 
 
 
