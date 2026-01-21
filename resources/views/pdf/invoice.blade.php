@@ -328,14 +328,14 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
         },
 
         html2canvas: {
-            scale: 1,
+            scale: 0.9,
             useCORS: true,
             scrollY: 0
         },
 
         jsPDF: {
             unit: 'mm',
-            format: [210, 297], 
+            format: [210, 297],
             orientation: 'portrait'
         }
     };
