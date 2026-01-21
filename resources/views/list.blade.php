@@ -45,7 +45,7 @@
                             </a>
 
                             <a id="downloadPdfLink" href="{{ route('invoice.pdf', $invoice->id ?? '') }}" download
-                                style="display:none;">
+                                style="display:none;">Download
                             </a>
 
                             <form action="{{ route('invoice.delete', $invoice->id) }}" method="POST" class="d-inline"
@@ -75,3 +75,29 @@
 </body>
 
 </html>
+<script>
+/* ===== EXISTING PRINT CODE (UNCHANGED) ===== */
+document.getElementById("printBtn").addEventListener("click", function() {
+    const pageContainer = document.querySelector(".page-container");
+
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = 'none';
+        }
+    });
+
+    window.print();
+
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = '';
+        }
+    });
+});
+
+/* ===== NEW DOWNLOAD LOGIC (ADDED) ===== */
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    document.getElementById("downloadPdfLink").click();
+});
+</script>
