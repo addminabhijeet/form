@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invoice;
+use App\Models\User;
 
 class InvoiceController extends Controller
 {
@@ -11,6 +12,12 @@ class InvoiceController extends Controller
     {
         return view('form');
     }
+
+    public function list()
+    {
+        return view('list');
+    }
+
     public function create()
     {
         return view('invoice_form');

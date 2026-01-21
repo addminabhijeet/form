@@ -16,9 +16,6 @@ class Invoice extends Model
         'candidate_name',
         'candidate_email',
         'candidate_address',
-        'package',
-        'account_number',
-        'ifsc_code',
-        'bank_name'
+        'package'
     ];
 }
