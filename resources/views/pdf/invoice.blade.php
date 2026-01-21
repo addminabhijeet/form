@@ -161,7 +161,12 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s2" style="left:582px;bottom:769px;letter-spacing:0.18px;">Qty. </span><span class="t s2" style="left:688px;bottom:769px;letter-spacing:0.2px;">Amount (INR) </span>
 <span class="t s3" style="left:59px;bottom:285px;letter-spacing:0.2px;word-spacing:0.01px;">Payment Information (Bank Details): </span>
 <span class="t s4" style="left:483px;bottom:453px;letter-spacing:-0.07px;">Sub Total </span>
-<span class="t s2" style="left:712px;bottom:449px;letter-spacing:0.16px;">₹ 2000.00 </span>
+<span class="t s2" style="left:712px;bottom:449px;letter-spacing:0.16px;">
+₹{{
+    $invoice->package === 'career_starter' ? 2999 :
+    ($invoice->package === 'growth_package' ? 3999 :
+    ($invoice->package === 'career_acceleration' ? 4999 : 0))
+}}</span>
 <span class="t s5" style="left:54px;bottom:1173px;letter-spacing:1.1px;">INVOICE </span>
 <span class="t s6" style="left:414px;bottom:25px;letter-spacing:0.03px;">THANK YOU </span>
 <span class="t s7" style="left:260px;bottom:179px;letter-spacing:-0.11px;">925020015760863 </span>
@@ -179,7 +184,19 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s7" style="left:221px;bottom:202px;">: </span>
 <span class="t s7" style="left:221px;bottom:180px;">: </span>
 <span class="t s7" style="left:221px;bottom:158px;">: </span>
-<span class="t s2" style="left:410px;bottom:652px;letter-spacing:0.16px;">₹ ****.** </span><span class="t s2" style="left:550px;bottom:652px;letter-spacing:0.16px;">₹ ****.** </span><span class="t s2" style="left:715px;bottom:652px;letter-spacing:0.16px;">₹ ****.** </span>
+<span class="t s2" style="left:410px;bottom:652px;letter-spacing:0.16px;">
+₹{{
+    $invoice->package === 'career_starter' ? 2999 :
+    ($invoice->package === 'growth_package' ? 3999 :
+    ($invoice->package === 'career_acceleration' ? 4999 : 0))
+}}
+</span><span class="t s2" style="left:550px;bottom:652px;letter-spacing:0.16px;">1 </span><span class="t s2" style="left:715px;bottom:652px;letter-spacing:0.16px;">
+₹{{
+    $invoice->package === 'career_starter' ? 2999 :
+    ($invoice->package === 'growth_package' ? 3999 :
+    ($invoice->package === 'career_acceleration' ? 4999 : 0))
+}}
+</span>
 <span class="t s3" style="left:59px;bottom:326px;letter-spacing:0.21px;word-spacing:0.01px;">Payment Link: </span><span class="t s2" style="left:225px;bottom:326px;letter-spacing:0.2px;">https://noryaan.com/pricing/ </span>
 <span class="t s7" style="left:260px;bottom:248px;letter-spacing:-0.13px;">NORYAAN PRIVATE LIMITED </span></div>
 
