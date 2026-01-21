@@ -314,76 +314,71 @@ document.getElementById("printBtn").addEventListener("click", function() {
     });
 });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.9.0/dist/dom-to-image-more.min.js"></script>
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
-    // --- Temporarily apply print CSS to the element ---
+    // --- Inject PRINT-ONLY CSS (same as provided) ---
     const printStyles = `
-        * {
-            color: #000 !important;
-            box-shadow: none !important;
-            text-shadow: none !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }
-        body, .page-container {
-            background: #fff !important;
-        }
-        h1,h2,h3,h4,h5,h6,p,label,span,small,th,td {
-            color: #000 !important;
-            font-weight: 700 !important;
-        }
-        .card, .card-body {
-            background: #fff !important;
-            border: 2px solid #000 !important;
-            color: #000 !important;
-        }
-        table {
-            border-collapse: collapse !important;
-            width: 100% !important;
-        }
-        table, th, td {
-            border: 2px solid #000 !important;
-            background: #fff !important;
-            font-weight: 700 !important;
-        }
-        .badge {
-            background: #ddd !important;
-            color: #000 !important;
-            font-weight: 800 !important;
-            border: 2px solid #000 !important;
-        }
-        iconify-icon, i {
-            color: #000 !important;
-            filter: grayscale(100%) contrast(200%) !important;
+        @media print {
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body * {
+                visibility: hidden !important;
+            }
+
+            .page-container,
+            .page-container * {
+                visibility: visible !important;
+            }
+
+            .page-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                background: #fff !important;
+            }
         }
     `;
 
-    const styleTag = document.createElement('style');
-    styleTag.id = 'pdfPrintStyle';
+    const styleTag = document.createElement("style");
+    styleTag.id = "pdfPrintStyle";
     styleTag.innerHTML = printStyles;
     document.head.appendChild(styleTag);
 
-    // --- html2pdf options ---
+    // --- html2pdf options (UNCHANGED LOGIC) ---
     const opt = {
-        margin:       [15, 15, 15, 15],
-        filename:     'page.pdf',
-        image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  {
+        margin: [0, 0, 0, 0],
+        filename: 'page.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
             scale: 2,
             useCORS: true,
-            backgroundColor: '#fff',
-            logging: false
+            backgroundColor: '#ffffff',
+            logging: false,
+            scrollY: 0
         },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait'
+        }
     };
 
     // --- Generate PDF ---
     html2pdf().set(opt).from(element).save().finally(() => {
-        // Remove temporary print styles after PDF is generated
-        const tempStyle = document.getElementById('pdfPrintStyle');
+        // Cleanup injected print styles
+        const tempStyle = document.getElementById("pdfPrintStyle");
         if (tempStyle) tempStyle.remove();
     });
 });
@@ -395,7 +390,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 
 </body>
 </html>
