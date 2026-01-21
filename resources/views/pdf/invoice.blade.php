@@ -319,23 +319,24 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     const element = document.querySelector(".page-container");
 
     html2canvas(element, {
-        scale: 2,         // increase for higher quality
-        useCORS: true,
-        scrollY: 0
+        scale: 2,        // increase scale for better quality
+        useCORS: true,   // handle cross-origin images
+        scrollY: -window.scrollY // ensures page offset is ignored
     }).then(canvas => {
-        // Convert canvas to image URL
-        const imgData = canvas.toDataURL('image/jpeg', 1.0); // JPEG 100% quality
+        // Convert canvas to image
+        const imgData = canvas.toDataURL('image/jpeg', 1.0); // JPEG, 100% quality
 
-        // Create temporary link to trigger download
+        // Trigger download
         const link = document.createElement('a');
         link.href = imgData;
-        link.download = 'document.jpg'; // file name
+        link.download = 'page-image.jpg'; // file name
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     });
 });
 </script>
+
 
 
 
