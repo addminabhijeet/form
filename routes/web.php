@@ -11,4 +11,5 @@ Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'pdf'])->name('invoic
 Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
 Route::put('/invoice-update/{id}', [InvoiceController::class, 'update'])->name('invoice.update');
 Route::delete('/invoice-delete/{id}', [InvoiceController::class, 'destroy'])->name('invoice.delete');
+Route::delete('/invoice-download/{id}', [InvoiceController::class, 'destroy'])->name('invoice.delete');
 

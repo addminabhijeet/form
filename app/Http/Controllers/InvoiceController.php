@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invoice;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InvoiceController extends Controller
 {
@@ -86,5 +87,13 @@ class InvoiceController extends Controller
         $invoice = Invoice::findOrFail($id);
 
         return view('pdf.invoice', compact('invoice'));
+    }
+    public function download($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+
+        $pdf = Pdf::loadView('invoice.pdf', compact('invoice'));
+
+        return $pdf->download('invoice_' . $invoice->invoice_number . '.pdf');
     }
 }
