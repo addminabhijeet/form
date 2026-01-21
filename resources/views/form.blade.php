@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="text-center">
         <a href="{{ route('home') }}" class="btn btn-primary">Create Invoice</a>
     </div>
 
