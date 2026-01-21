@@ -325,8 +325,8 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
         html2canvas: {
             scale: 2,
             useCORS: true,
-            width: 594,   // A4 width in px (210mm @ 96dpi)
-            height: 923  // A4 height in px (297mm @ 96dpi)
+            width: 7794,   // A4 width in px (210mm @ 96dpi)
+            height: 11123  // A4 height in px (297mm @ 96dpi)
         },
         jsPDF: {
             unit: 'mm',
