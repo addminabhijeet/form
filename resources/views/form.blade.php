@@ -50,60 +50,84 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('invoice.submit') }}">
+                    <form method="POST"
+                        action="{{ isset($invoice) ? route('invoice.update', $invoice->id) : route('invoice.submit') }}">
                         @csrf
+
+                        @isset($invoice)
+                            @method('PUT')
+                        @endisset
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="invoice_number" class="form-label">Invoice Number</label>
                                 <input type="text" class="form-control" id="invoice_number" name="invoice_number"
-                                    value="{{ $invoiceNumber ?? '' }}" required>
+                                    value="{{ old('invoice_number', $invoice->invoice_number ?? ($invoiceNumber ?? '')) }}"
+                                    required>
                             </div>
+
                             <div class="col-md-6">
                                 <label for="invoice_date" class="form-label">Invoice Date</label>
                                 <input type="date" class="form-control" id="invoice_date" name="invoice_date"
-                                    required>
+                                    value="{{ old('invoice_date', $invoice->invoice_date ?? '') }}" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="due_date" class="form-label">Due Date</label>
-                                <input type="date" class="form-control" id="due_date" name="due_date" required>
+                                <input type="date" class="form-control" id="due_date" name="due_date"
+                                    value="{{ old('due_date', $invoice->due_date ?? '') }}" required>
                             </div>
+
                             <div class="col-md-6">
                                 <label for="candidate_name" class="form-label">Candidate Name</label>
                                 <input type="text" class="form-control" id="candidate_name" name="candidate_name"
-                                    required>
+                                    value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="candidate_email" class="form-label">Candidate Email</label>
                             <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-                                required>
+                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
-                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="2" required></textarea>
+                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="2" required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="package" class="form-label">Package</label>
                             <select class="form-select" id="package" name="package" required>
-                                <option value="" selected disabled>Select Package</option>
-                                <option value="career_starter">Career Starter</option>
-                                <option value="growth_package">Growth Package</option>
-                                <option value="career_acceleration">Career Acceleration</option>
+                                <option value="" disabled>Select Package</option>
+
+                                <option value="career_starter"
+                                    {{ old('package', $invoice->package ?? '') == 'career_starter' ? 'selected' : '' }}>
+                                    Career Starter
+                                </option>
+
+                                <option value="growth_package"
+                                    {{ old('package', $invoice->package ?? '') == 'growth_package' ? 'selected' : '' }}>
+                                    Growth Package
+                                </option>
+
+                                <option value="career_acceleration"
+                                    {{ old('package', $invoice->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
+                                    Career Acceleration
+                                </option>
                             </select>
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Submit Invoice</button>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                {{ isset($invoice) ? 'Update Invoice' : 'Submit Invoice' }}
+                            </button>
                         </div>
 
                     </form>
+
                 </div>
             </div>
         </div>

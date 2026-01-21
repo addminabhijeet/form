@@ -8,3 +8,7 @@ Route::get('/invoice-create', [InvoiceController::class, 'create'])->name('invoi
 Route::post('/invoice-store', [InvoiceController::class, 'store'])->name('invoice.submit');
 Route::get('/invoice-list', [InvoiceController::class, 'list'])->name('invoice.list');
 Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'pdf'])->name('invoice.pdf');
+Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
+Route::put('/invoice-update/{id}', [InvoiceController::class, 'update'])->name('invoice.update');
+Route::delete('/invoice-delete/{id}', [InvoiceController::class, 'destroy'])->name('invoice.delete');
+

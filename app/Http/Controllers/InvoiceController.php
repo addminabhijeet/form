@@ -29,6 +29,12 @@ class InvoiceController extends Controller
         return view('form', compact('invoiceNumber')); // <-- make sure this matches your Blade file
     }
 
+    public function edit($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        return view('form', compact('invoice'));
+    }
+
     public function store(Request $request)
     {
         // Validate input (aligned with form)
@@ -48,6 +54,32 @@ class InvoiceController extends Controller
         return redirect()->back()->with('success', 'Invoice submitted successfully!');
     }
 
+    public function update(Request $request, $id)
+    {
+        $invoice = Invoice::findOrFail($id);
+
+        $data = $request->validate([
+            'invoice_number'     => 'required|string|unique:invoices,invoice_number,' . $invoice->id,
+            'invoice_date'       => 'required|date',
+            'due_date'           => 'required|date|after_or_equal:invoice_date',
+            'candidate_name'     => 'required|string|max:255',
+            'candidate_email'    => 'required|email|max:255',
+            'candidate_address'  => 'required|string',
+            'package'            => 'required|in:career_starter,growth_package,career_acceleration',
+        ]);
+
+        $invoice->update($data);
+
+        return redirect()->route('home')->with('success', 'Invoice updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $invoice->delete();
+
+        return redirect()->back()->with('success', 'Invoice deleted successfully!');
+    }
 
     public function pdf($id)
     {
