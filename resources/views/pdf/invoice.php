@@ -140,8 +140,8 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice #{{ $invoice->invoice_number }}</span>
 <span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date:{{ $invoice->invoice_date }}</span>
 <span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date:{{ $invoice->due_date }}</span>
-<span class="t s0" style="left:178px;bottom:1143px;letter-spacing:0.12px;">********** </span>
-<span class="t s0" style="left:178px;bottom:1124px;letter-spacing:0.12px;">**-**-**** </span>
+<span class="t s0" style="left:178px;bottom:1143px;letter-spacing:0.12px;"></span>
+<span class="t s0" style="left:178px;bottom:1124px;letter-spacing:0.12px;"></span>
 <span class="t s0" style="left:56px;bottom:1008px;letter-spacing:0.18px;">NORYAAN PRIVATE LIMITED </span>
 <span class="t s0" style="left:56px;bottom:987px;letter-spacing:0.16px;">accounts@noryaan.com </span>
 <span class="t s0" style="left:56px;bottom:966px;letter-spacing:0.13px;">5ws3, 5th Floor, West Tower, Mani Casadona, 11f 04 - </span>
