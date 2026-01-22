@@ -228,7 +228,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s0" style="left:503px;bottom:989px;letter-spacing:0.17px;">{{ $invoice->candidate_name }}</span>
 <span class="t s6" style="left:529px;bottom:962px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
 <span class="t s6" style="left:529px;bottom:912px;letter-spacing:0.1px;"></span>
-<span class="t s6" style="left:529px;bottom:875px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
+<span class="t s6" style="left:529px;bottom:876px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
 <span class="t s6" style="left:529px;bottom:938px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
 <span class="t s6" style="left:349px;bottom:861px;letter-spacing:0.13px;">PAN : AAYFN8278K </span>
 <span class="t s3" style="left:461px;bottom:635px;letter-spacing:0.06px;">
