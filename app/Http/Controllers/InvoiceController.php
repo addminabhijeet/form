@@ -24,7 +24,7 @@ class InvoiceController extends Controller
     public function create()
     {
         $lastInvoice = Invoice::withTrashed()
-            ->where('invoice_number', 'like', 'NYS_A+%')
+            ->where('invoice_number', 'like', 'NYS_A%')
             ->orderBy('id', 'desc')
             ->first();
 
