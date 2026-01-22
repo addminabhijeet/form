@@ -52,7 +52,7 @@ class InvoiceController extends Controller
         // Save to database
         Invoice::create($data);
 
-        return redirect()->route('invoice.list')->with('success', 'Invoice submitted successfully!');
+        return redirect()->back()->with('success', 'Invoice submitted successfully!');
     }
 
     public function update(Request $request, $id)
