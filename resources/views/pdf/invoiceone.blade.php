@@ -225,25 +225,25 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s6" style="left:91px;bottom:914px;letter-spacing:0.14px;">www.noryaan.com </span>
 <span class="t s7" style="left:66px;bottom:1017px;letter-spacing:-0.19px;">Bill From: </span>
 <span class="t s7" style="left:503px;bottom:1017px;letter-spacing:-0.17px;">Bill To: </span>
-<span class="t s0" style="left:503px;bottom:989px;letter-spacing:0.17px;">MINAKSHI DAS </span>
-<span class="t s6" style="left:529px;bottom:962px;letter-spacing:0.1px;">********************** </span>
+<span class="t s0" style="left:503px;bottom:989px;letter-spacing:0.17px;">{{ $invoice->candidate_name }}</span>
+<span class="t s6" style="left:529px;bottom:962px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
 <span class="t s6" style="left:529px;bottom:915px;letter-spacing:0.1px;">***************************************************** </span>
 <span class="t s6" style="left:529px;bottom:898px;letter-spacing:0.1px;">***************************************************** </span>
-<span class="t s6" style="left:529px;bottom:938px;letter-spacing:0.1px;">********************** </span>
+<span class="t s6" style="left:529px;bottom:938px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
 <span class="t s6" style="left:349px;bottom:861px;letter-spacing:0.13px;">PAN : AAYFN8278K </span>
 <span class="t s3" style="left:461px;bottom:635px;letter-spacing:0.06px;">*** </span>
 <span class="t s3" style="left:762px;bottom:635px;letter-spacing:0.06px;">*** </span>
 <span class="t s3" style="left:762px;bottom:437px;letter-spacing:0.06px;">*** </span>
 <span class="t s8" style="left:32px;bottom:1162px;letter-spacing:0.18px;">Invoice</span>
-<span class="t s9" style="left:98px;bottom:1162px;"># </span>
+<span class="t s9" style="left:98px;bottom:1162px;"># {{ $invoice->invoice_number }}</span>
 <span class="t s9" style="left:174px;bottom:1162px;letter-spacing:0.21px;">NYS_A** </span>
-<span class="t s8" style="left:174px;bottom:1131px;letter-spacing:0.15px;">**/**/**** </span>
+<span class="t s8" style="left:174px;bottom:1131px;letter-spacing:0.15px;"> {{ $invoice->invoice_date }}</span>
 <span class="t sa" style="left:32px;bottom:1196px;letter-spacing:1.1px;">INVOICE </span>
 <span class="t s8" style="left:32px;bottom:1131px;letter-spacing:0.16px;">Invoice Date </span>
 <span class="t s8" style="left:152px;bottom:1162px;">: </span>
 <span class="t s8" style="left:152px;bottom:1131px;">: </span>
 <span class="t s8" style="left:174px;bottom:1101px;letter-spacing:0.15px;">**/**/**** </span>
-<span class="t s8" style="left:32px;bottom:1101px;letter-spacing:0.18px;">Due Date </span>
+<span class="t s8" style="left:32px;bottom:1101px;letter-spacing:0.18px;">Due Date {{ $invoice->due_date }}</span>
 <span class="t s8" style="left:152px;bottom:1101px;">: </span></div>
 
 </div>
