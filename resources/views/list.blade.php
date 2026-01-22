@@ -57,10 +57,10 @@
                                     View
                                 </a>
                                 <a href="{{ route('invoiceone.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
-                                    View
+                                    View One
                                 </a>
                                 <a href="{{ route('invoicetwo.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
-                                    View
+                                    View Two
                                 </a>
 
                                 <a href="{{ route('invoice.edit', $invoice->id) }}" class="btn btn-sm btn-warning">
