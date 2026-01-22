@@ -200,7 +200,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s3" style="left:597px;bottom:777px;letter-spacing:0.18px;">Qty. </span>
 <span class="t s3" style="left:703px;bottom:777px;letter-spacing:0.2px;">Amount (INR) </span>
 <span class="t s4" style="left:413px;bottom:7px;letter-spacing:0.03px;">THANK YOU </span>
-<span class="t s3" style="left:614px;bottom:635px;">* </span>
+<span class="t s3" style="left:614px;bottom:635px;">1 </span>
 <span class="t s5" style="left:261px;bottom:440px;letter-spacing:-0.08px;">Instalment Paid Amount </span>
 <span class="t s5" style="left:328px;bottom:499px;letter-spacing:-0.07px;">Sub Total </span>
 <span class="t s3" style="left:762px;bottom:496px;letter-spacing:0.17px;">
