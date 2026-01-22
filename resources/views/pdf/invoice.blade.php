@@ -349,7 +349,7 @@ document.getElementById("downloadBtn").addEventListener("click", async function 
     await new Promise(resolve => setTimeout(resolve, 5));
 
     // ✅ A4 pixel dimensions
-    const a4WidthPx = 1175;
+    const a4WidthPx = 1075;
     const a4HeightPx = Math.round(a4WidthPx * 1.4142);
 
     // ✅ html2pdf options (logic-aligned)
@@ -358,7 +358,7 @@ document.getElementById("downloadBtn").addEventListener("click", async function 
         filename: 'page.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
-            scale: 1,
+            scale: 3,
             useCORS: true,
             scrollY: 0,
             backgroundColor: "#ffffff",
