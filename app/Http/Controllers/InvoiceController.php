@@ -11,8 +11,9 @@ class InvoiceController extends Controller
 {
     public function home()
     {
-        return view('form');
+        return $this->create();
     }
+
 
     public function list()
     {
