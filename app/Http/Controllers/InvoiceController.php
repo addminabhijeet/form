@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class InvoiceController extends Controller
 {
@@ -37,7 +38,6 @@ class InvoiceController extends Controller
         return view('form', compact('invoice'));
     }
 
-
     public function store(Request $request)
     {
         try {
@@ -50,24 +50,21 @@ class InvoiceController extends Controller
                 ],
                 'invoice_date'       => 'required|date',
                 'due_date'           => 'required|date|after_or_equal:invoice_date',
-                'candidate_name'     => 'required|string|max: hookup255',
+                'candidate_name'     => 'required|string|max:255', // syntax fix only
                 'candidate_email'    => 'required|email|max:255',
                 'candidate_address'  => 'required|string',
                 'package'            => 'required|in:career_starter,growth_package,career_acceleration',
             ]);
 
-            // Save to database
             Invoice::create($data);
-
-            // ✅ success
             return redirect()->back()->with('success', 'Invoice submitted successfully!');
+        } catch (ValidationException $e) {
+            throw $e;
         } catch (\Exception $e) {
-
-            // ❌ failure (no logic changed)
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('error', 'Invoice submission failed. Please try again.');
+                ->with('error', $e->getMessage());
         }
     }
 
