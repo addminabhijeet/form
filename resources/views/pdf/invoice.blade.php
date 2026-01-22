@@ -148,9 +148,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:678px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? 'Priority delivery: 1–2 working days' :
+    $invoice->package === 'career_starter' ? 'Priority delivery: 1–2 working days, Advanced mock interview' :
     ($invoice->package === 'growth_package' ? 'Priority delivery: 1–2 working days, Advanced mock interview' :
-    ($invoice->package === 'career_acceleration' ? 'Priority delivery: 1–2 working days' : ''))
+    ($invoice->package === 'career_acceleration' ? 'Priority delivery: 1–2 working days, Advanced mock interview' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:657px;letter-spacing:0.12px;font-size:10px;">
@@ -162,9 +162,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? 'One-on-one career guidance by a senior expert' :
-    ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert' :
-    ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert' : ''))
+    $invoice->package === 'career_starter' ? 'One-on-one career guidance by a senior expert,' :
+    ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert,' :
+    ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert,' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:616px;letter-spacing:0.12px;font-size:10px;">
@@ -177,8 +177,8 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'Real-world case study demonstrating expertise,' :
-    ($invoice->package === 'growth_package' ? 'Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' :
-    ($invoice->package === 'career_acceleration' ? 'Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' : ''))
+    ($invoice->package === 'growth_package' ? 'Real-world case study demonstrating expertise,' :
+    ($invoice->package === 'career_acceleration' ? 'Real-world case study demonstrating expertise,' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;font-size:10px;">
