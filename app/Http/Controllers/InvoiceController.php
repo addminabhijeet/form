@@ -100,6 +100,20 @@ class InvoiceController extends Controller
         return view('pdf.invoice', compact('invoice'));
     }
 
+    public function pdfone($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+
+        return view('pdf.invoiceone', compact('invoice'));
+    }
+
+    public function pdftwo($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+
+        return view('pdf.invoicetwo', compact('invoice'));
+    }
+
     public function download($id)
     {
         $invoice = Invoice::findOrFail($id);
