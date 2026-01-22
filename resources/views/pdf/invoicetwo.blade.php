@@ -176,6 +176,13 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'High-impact, ATS-optimized resume, Expert-crafted,' : ''))
 }}
 </span>
+<span class="t s1" style="left:76px;bottom:414px;letter-spacing:-0.18px;font-size:10px;">
+{{
+    $invoice->package === 'career_starter' ? 'High-impact, ATS-optimized resume, Expert-crafted,' :
+    ($invoice->package === 'growth_package' ? 'High-impact, ATS-optimized resume, Expert-crafted,' :
+    ($invoice->package === 'career_acceleration' ? 'High-impact, ATS-optimized resume, Expert-crafted,' : ''))
+}}
+</span>
 <span class="t s2" style="left:37px;bottom:1112px;letter-spacing:0.18px;">Invoice</span>
 <span class="t s3" style="left:103px;bottom:1112px;"># </span>
 <span class="t s3" style="left:178px;bottom:1112px;letter-spacing:0.21px;">{{ $invoice->invoice_number }}</span></span>
