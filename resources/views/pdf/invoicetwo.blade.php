@@ -134,6 +134,13 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'Career Acceleration' : ''))
 }}
 </span>
+<span class="t s1" style="left:76px;bottom:522px;letter-spacing:-0.18px;font-size:10px;">
+{{
+    $invoice->package === 'career_starter' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
+    ($invoice->package === 'growth_package' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
+    ($invoice->package === 'career_acceleration' ? 'Personalized cover letter, Delivery in Word & PDF formats,' : ''))
+}}
+</span>
 <span class="t s1" style="left:76px;bottom:504px;letter-spacing:-0.18px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
