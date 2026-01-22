@@ -142,35 +142,35 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'Career Acceleration' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:669px;letter-spacing:0.13px;">
+<span class="t s0" style="left:74px;bottom:669px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
     ($invoice->package === 'growth_package' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
     ($invoice->package === 'career_acceleration' ? 'Personalized cover letter, Delivery in Word & PDF formats,' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:648px;letter-spacing:0.13px;">
+<span class="t s0" style="left:74px;bottom:648px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'Priority delivery: 1–2 working days' :
     ($invoice->package === 'growth_package' ? 'Priority delivery: 1–2 working days, Advanced mock interview' :
     ($invoice->package === 'career_acceleration' ? 'Priority delivery: 1–2 working days, Advanced mock interview' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:627px;letter-spacing:0.13px;">
+<span class="t s0" style="left:74px;bottom:627px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
     ($invoice->package === 'growth_package' ? 'preparation, Complete LinkedIn profile optimization,' :
     ($invoice->package === 'career_acceleration' ? 'preparation, Complete LinkedIn profile optimization,' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:607px;letter-spacing:0.13px;">
+<span class="t s0" style="left:74px;bottom:607px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
     ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert,' :
     ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert,' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:586px;letter-spacing:0.13px;">
+<span class="t s0" style="left:74px;bottom:586px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
     ($invoice->package === 'growth_package' ? '' :
