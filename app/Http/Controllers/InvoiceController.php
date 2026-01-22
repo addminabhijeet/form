@@ -71,7 +71,7 @@ class InvoiceController extends Controller
 
         $invoice->update($data);
 
-        return redirect()->route('home')->with('success', 'Invoice updated successfully!');
+        return redirect()->route('invoice.list')->with('success', 'Invoice updated successfully!');
     }
 
     public function destroy($id)
@@ -88,7 +88,7 @@ class InvoiceController extends Controller
 
         return view('pdf.invoice', compact('invoice'));
     }
-    
+
     public function download($id)
     {
         $invoice = Invoice::findOrFail($id);
