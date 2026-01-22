@@ -212,7 +212,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:491px;bottom:987px;letter-spacing:0.12px;">{{ $invoice->candidate_email }}</span>
 <span class="t s0" style="left:491px;bottom:966px;letter-spacing:0.12px;"></span>
 <span class="t s0" style="left:491px;bottom:946px;letter-spacing:0.12px;"></span>
-<span class="t s0" style="left:491px;bottom:925px;letter-spacing:0.12px;">{{ $invoice->candidate_address }}</span>
+<span class="t s0" style="left:491px;bottom:923px;letter-spacing:0.12px;">{{ $invoice->candidate_address }}</span>
 <span class="t s0" style="left:491px;bottom:905px;letter-spacing:0.12px;"></span>
 <span class="t s1" style="left:58px;bottom:1030px;letter-spacing:-0.1px;">Bill From: </span><span class="t s1" style="left:491px;bottom:1030px;letter-spacing:-0.09px;">Bill To: </span>
 <span class="t s2" style="left:111px;bottom:767px;letter-spacing:0.2px;">Item Description </span><span class="t s2" style="left:402px;bottom:767px;letter-spacing:0.17px;">Rate (INR) </span>
