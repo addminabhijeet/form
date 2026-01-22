@@ -183,9 +183,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? 'Exclusive webinars with experienced HR managers' :
-    ($invoice->package === 'growth_package' ? 'Exclusive webinars with experienced HR managers' :
-    ($invoice->package === 'career_acceleration' ? 'Exclusive webinars with experienced HR managers' : ''))
+    $invoice->package === 'career_starter' ? 'Exclusive webinars with experienced HR managers,' :
+    ($invoice->package === 'growth_package' ? 'Exclusive webinars with experienced HR managers,' :
+    ($invoice->package === 'career_acceleration' ? 'Exclusive webinars with experienced HR managers,' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:556px;letter-spacing:0.12px;font-size:10px;">
