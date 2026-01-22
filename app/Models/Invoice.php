@@ -16,13 +16,10 @@ class Invoice extends Model
         'due_date',
         'candidate_name',
         'candidate_email',
+        'candidate_mobile', 
         'candidate_address',
         'package',
     ];
 
-    // Optional: explicitly define table if needed
-    // protected $table = 'invoices';
-
-    // Optional: ensure deleted_at is treated as date
     protected $dates = ['deleted_at'];
 }
