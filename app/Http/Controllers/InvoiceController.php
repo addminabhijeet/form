@@ -35,7 +35,7 @@ class InvoiceController extends Controller
             $newSerial = '0001';
         }
 
-        $invoiceNumber = 'NYS_A+' . $newSerial;
+        $invoiceNumber = 'NYS_A' . $newSerial;
 
         return view('form', compact('invoiceNumber'));
     }
