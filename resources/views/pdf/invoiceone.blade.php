@@ -259,7 +259,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s8" style="left:152px;bottom:1131px;">: </span>
 <span class="t s8" style="left:174px;bottom:1101px;letter-spacing:0.15px;"></span>
 <span class="t s8" style="left:32px;bottom:1101px;letter-spacing:0.18px;">Due Date</span>
-<span class="t s8" style="left:152px;bottom:1101px;">:  {{ $invoice->due_date }}</span></div>
+<span class="t s8" style="left:152px;bottom:1101px;">:   {{ $invoice->due_date }}</span></div>
 
 </div>
 
