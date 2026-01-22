@@ -358,7 +358,7 @@ document.getElementById("downloadBtn").addEventListener("click", async function 
         filename: 'page.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
-            scale: 3,
+            scale: 1,
             useCORS: true,
             scrollY: 0,
             backgroundColor: "#ffffff",
