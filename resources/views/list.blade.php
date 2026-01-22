@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Invoice List</title>
+    <title>{{ config('app.name', 'Laravel') }} - List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
