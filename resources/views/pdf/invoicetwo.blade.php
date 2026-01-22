@@ -199,7 +199,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
 </span>
 <span class="t s2" style="left:37px;bottom:1112px;letter-spacing:0.18px;">Invoice</span>
 <span class="t s3" style="left:103px;bottom:1112px;"># </span>
-<span class="t s3" style="left:178px;bottom:1112px;letter-spacing:0.21px;">{{ $invoice->invoice_number }}</span></span>
+<span class="t s3" style="left:178px;bottom:1112px;letter-spacing:0.21px;font-weight:700;">{{ $invoice->invoice_number }}</span>
 <span class="t s2" style="left:178px;bottom:1081px;letter-spacing:0.15px;">{{ $invoice->invoice_date }}</span>
 <span class="t s4" style="left:37px;bottom:1147px;letter-spacing:1.1px;">INVOICE </span>
 <span class="t s5" style="left:414px;bottom:25px;letter-spacing:0.03px;">THANK YOU </span>
