@@ -135,50 +135,50 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <div class="text-container"><span class="t s0" style="left:39px;bottom:699px;letter-spacing:0.12px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'High-impact, ATS-optimized resume, Expert-crafted' :
-    ($invoice->package === 'growth_package' ? 'High-impact, ATS-optimized resume' :
-    ($invoice->package === 'career_acceleration' ? 'High-impact, ATS-optimized resume' : ''))
+    ($invoice->package === 'growth_package' ? 'High-impact, ATS-optimized resume, Expert-crafted' :
+    ($invoice->package === 'career_acceleration' ? 'High-impact, ATS-optimized resume, Expert-crafted' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:678px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? ' personalized cover letter' :
-    ($invoice->package === 'growth_package' ? 'Expert-crafted, personalized cover letter' :
-    ($invoice->package === 'career_acceleration' ? 'Expert-crafted, personalized cover letter' : ''))
+    $invoice->package === 'career_starter' ? ' Personalized cover letter, Delivery in Word & PDF formats' :
+    ($invoice->package === 'growth_package' ? 'Personalized cover letter, Delivery in Word & PDF formats' :
+    ($invoice->package === 'career_acceleration' ? 'Personalized cover letter, Delivery in Word & PDF formats' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:657px;letter-spacing:0.12px;font-size:10px;">
-{{
-    $invoice->package === 'career_starter' ? 'Delivery in Word & PDF formats' :
-    ($invoice->package === 'growth_package' ? 'Delivery in Word & PDF formats' :
-    ($invoice->package === 'career_acceleration' ? 'Delivery in Word & PDF formats' : ''))
-}}
-</span>
-<span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? 'Priority delivery: 1–2 working days' :
     ($invoice->package === 'growth_package' ? 'Priority delivery: 1–2 working days' :
     ($invoice->package === 'career_acceleration' ? 'Priority delivery: 1–2 working days' : ''))
 }}
 </span>
+<span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;font-size:10px;">
+{{
+    $invoice->package === 'career_starter' ? 'Advanced mock interview preparation, Complete LinkedIn profile optimization' :
+    ($invoice->package === 'growth_package' ? 'Advanced mock interview preparation, Complete LinkedIn profile optimization' :
+    ($invoice->package === 'career_acceleration' ? 'Advanced mock interview preparation, Complete LinkedIn profile optimization' : ''))
+}}
+</span>
 <span class="t s0" style="left:39px;bottom:616px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? '' :
-    ($invoice->package === 'growth_package' ? 'Advanced mock interview preparation' :
-    ($invoice->package === 'career_acceleration' ? 'Advanced mock interview preparation' : ''))
+    $invoice->package === 'career_starter' ? 'One-on-one career guidance by a senior expert' :
+    ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert' :
+    ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
-    ($invoice->package === 'growth_package' ? 'Complete LinkedIn profile optimization' :
-    ($invoice->package === 'career_acceleration' ? 'Complete LinkedIn profile optimization' : ''))
+    ($invoice->package === 'growth_package' ? '' :
+    ($invoice->package === 'career_acceleration' ? '' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
-    ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert' :
-    ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert' : ''))
+    ($invoice->package === 'growth_package' ? '' :
+    ($invoice->package === 'career_acceleration' ? '' : ''))
 }}
 </span>
 <span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice # {{ $invoice->invoice_number }}</span>
