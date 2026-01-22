@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <!-- Required Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
             background-color: #444;
@@ -35,7 +39,39 @@
             background-color: rgba(255, 255, 0, 0.25);
             cursor: pointer;
         }
-    </style>
+    </style><style>
+@media print {
+
+    /* Define A4 page size */
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body * {
+        visibility: hidden; /* Hide everything by default */
+    }
+
+    .page-container,
+    .page-container * {
+        visibility: visible; /* Show only page-container and its children */
+    }
+
+    .page-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        /* A4 dimensions */
+        width: 210mm;
+        height: 297mm;
+
+        margin: 0;
+        padding: 0;
+    }
+}
+
+</style>
     <style class="shared-css" type="text/css" >
 .t {
 	transform-origin: bottom left;
@@ -81,12 +117,12 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
 </style>
 <script id="metadata" type="application/json">{"pagecount":1,"title":"","author":"","subject":"","keywords":"","creator":"","producer":"iLovePDF","creationdate":"","moddate":"D:20260122141229Z","trapped":"","fileName":"Sample Invoice-1.pdf","bounds":[[909,1286]],"bookmarks":[],"thumbnailType":"","pageType":"html","pageLabels":[]}</script>
 <script id="annotations" type="application/json">{"pages":[{"page":1,"annotations":[{"type":"Link","bounds":[63,423,155,23],"objref":"65"},{"type":"Link","bounds":[218,423,5,23],"objref":"67"},{"type":"Link","bounds":[87,454,142,18],"objref":"69"},{"type":"Link","bounds":[87,478,28,19],"objref":"71"},{"type":"Link","bounds":[124,503,78,18],"objref":"73"},{"type":"Link","bounds":[57,1167,803,28],"objref":"75"},{"type":"Link","bounds":[289,1192,339,27],"objref":"77"}]}]}</script>
-<script>window.addEventListener('DOMContentLoaded',function(){const el=document.createElement("div");el.innerHTML=atob("PGRpdiBzdHlsZT0icG9zaXRpb246Zml4ZWQ7cmlnaHQ6MzBweDtib3R0b206MTVweDtib3JkZXItcmFkaXVzOjVweDtib3gtc2hhZG93OiAxcHggMXB4IDRweCByZ2JhKDEyMCwxMjAsMTIwLDAuNSk7bGluZS1oZWlnaHQ6MDtvdmVyZmxvdzpoaWRkZW47Ij48YSBocmVmPSJodHRwczovL3d3dy5pZHJzb2x1dGlvbnMuY29tL29ubGluZS1wZGYtdG8taHRtbDUtY29udmVydGVyIiByZWw9Im5vZm9sbG93IiB0YXJnZXQ9Il9ibGFuayI+PGltZyBhbHQ9IkNyZWF0ZWQgd2l0aCBCdWlsZFZ1IiBzdHlsZT0iYm9yZGVyOjA7IiBzcmM9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTWdBQUFBMUNBTUFBQUF6aWxSckFBQUFzVkJNVkVYLy8vOEFuZUVBZDhVRG9PVUFXYUFBbHQ4REF3SUFacGNQRHczNSt2dEJRVC9tNXViZDNkMzE5ZmFNakl2WDcvcWtwS1R1N3U3UzB0S2VucDFuWjJhWGw1WjJkblhLeXNyQndjRUJhNTkrZm4yYjFmR3lzckVFa05VRGdzdUZoWVF2THk0RmNMQUhZS2JvOXZ5cjMvVUdmN200dUxoZlgxOVVWRlBhNlBIRDZQZ1lwdVFLaXM2cXFxcVJrWkJweGUwQVRaa1FtdHd5c09jTWRxZUN6ZS9EM081TXUrdE1udFIvcnRFN2g3cTQ1UGVSckZIVEFBQUcxa2xFUVZSbzN1MlphM2VpTUJDR3A2QnlTWUxjUWFUaVphdDBxMWJiMnRiOS96OXNKMEdyRW9yVXZaMDl4L2NEUW9MbnpPUE1Pd2tJVjExMTFWVlh5ZXJBMzFlM0wybUN3eisrbGZVZFJ5ZmZUelZwQkVJakJnMFZSL3dRWHdMeTFDN3BackFCK0NhTnRwVU5HTnY1ellrZUhpZm5RU3cvODEzNFZJWU5CeTM1UmJEOE9nWkdmRk5TZTRRUlA1V0gxY0ZvenQ2MWtYcDZiL3RwY2c3RTlqRW5GRWdhQXhBU3gzakFFd2VpbEFBalVUUTE4WVNtSEhVYUwxUDg4SUpvQ293Q09MUXhoL0ZRNWxEdkVPUkY0cmdkS2NyYnM2Yk4xUkwyNHptUVdjU1A3aXdJUTdDSGdlOUZTQmJTUldMN2xBNlRhV3A2SkE0WDRSU1NaRG1jY25RVDczVjhBN0pGVTQ2cWlIdktwZ29QUVc3dk5LMG5KYkIvQmlTbi9PaW5pRVM5Qk1nTWZFSkRaaTZtc3lXZEFURGt5cTFwRmhJOFNYam9RWUwza2lRRzMybktNWkVpdm5rZUtSc1piOTVUbExtNjdtbmFuVnFlNjU3SmlMdkhTU0xiQXd3M3NPMkZZOXEyVFYwTW1YQVFISExqREpQQlFUd2JVeFpGVnBSQlV6M0tWdEFVNWFVU1QxbXI2cDNXMDI3THhmVlVEK0xOR0xnMENjREpIUy9nR1NHNTc3Q2M0RndVQWc0Yk1FUC9HRFEzakpuSXlBd0hDWVMrMjdqMVNoVjAwK3RoeEhKaElaNXdSMDhyK3gxSlhzNTFyY1Nuamg5aWRkazJFSXpkVDlEWXN5UWtyb1h6R1hvRkwySUkvSVFUUVpvbnZvM2ZNNkdwWHR0eXhDTmxJT1ZqalhpRHRTZ3hUQWtTbGZTakZnU0ljQW5GZ2pjTTlFVHhBWXd5TUppWU1jU3M2R1Y4eGhDTkRTeXZLY2VQRzhucEdpYUUwOGw0dTRwNmx2eU9lcGo4Z1pYZHNKem1hNkZrQll4WStzRXhEWm95K0VDdDhIdjdzUTdFeTRxZk5zb3NWSkNTd3d3ZldkclJMeUwzWmFlakF6QmlHYStIVHYvSWpsYjJPK3I3NXlER3NETVVKMEZINzZEMFliaEhHZTVHOGlwWFg3NFdxdTBlUml3RnlVTWZ6ZFhEVFZWK2Y2d0JNVHVGYXoxZEg1cm1FR01mN25KZzZzTTh6NGM0VHVCeXZjaE9Gd21SVjBpZWtPTzA5YlJCdVFXL05nT3h3WERja0FlK0IrRVc5L1dPZFRuSFJDb1A4VnUzcFlSczBkNzdOQjM4cmw2VUVWdWNaSG9uMllNdy9LQzZQcnNjNUZGeSttQ2s5UVpTMGJ4T250SGRwZGFtM2NrTnVEa0lHK29tT3dKeGRkMi9tT083WEVLSzBodEpkRGRkNktPNXl5WDQvQ1JWVm5NUThQVWhQWlFXdzlLeUx3WjVsUk9pS01xZzBzVnZiYWtwYkU0cnMvczFrRVRYM1IxSUV2cW0zc25acFJ3L0pJNWJCVlcxMU1uUTZ0MFcyTHBFK3hXUThBT0V0MStra1plK3k5ZEN6bkVySmFSZitleTF2b2QzcFVUYkhFUmt3dGxuSkVQRC9NNjFVQlFXbnNnYlcrTkpHbjZCRGQ5RUhpNi9CcEx1elMxbUFsMFBMMjY5RDVMVEt4T2lkb3YxUnNaN3c5djNuZnJCYUFyU1dmQnJleWdxUzJURTVQTzZIdisyTmFReUllcjZIWVhRMG43a1JUbmNqK1hYT0NONTRXM2Rnd01JUkRwMjQ4dExTMDZJdEJhdXg2dlZxcXFSZFpGYlpQRHdYTlYwcjRYU3pTa1VHaGFJWWFkellYRkpiMGtVMUZ6ZVpMVmFyWkZhMGNqZWxFTFNXaWlEb0h5emNNUTBuODFtZmhnY05ydGhuZ0NLNUdaT0wyMi9rdE9WaW9lVFZtdThybWhrZldVbm5xM1hmL2FtVVY0UTI5Vk9mMGFRTzdYQzZkdVJ3QkJmYW0vWnZ3WHBublg2WENTa3d1bnd2bXFOeDZNaUpjcnE3UndJaTF3SGhOelkzWlgyYm1aLzRWQktLS1ZzUDhPaW1CN2RhSWdQMTNYcWQvRnk2eFhpQ1psWFAzaHNWeTBVMG95VmNXdDFwbXZSYkdGbkhJQllRV3FGbElka2cxREFMeHdQSUY1NmZoSUVCRmdBcU5qeUZsbkcrSm13VnpyRmIyZjJJb3ZxbnFzZTVuSkNpcDFodGROUm05YXh4dmUxSUJaR3l4Z0dISEthYU9ZZ3lQSXdoWHppM0JiSmNqSitUK0x3Z1lTRDVDa0h3VU1RWTh4TzNWdmZmckc0eVk5VHJaYThaZmtHS0ZGY0I2MjJSaDBJNWtESVRvdVBBRUVDRUZvZWdYaVJBTEVLUHE0RVE1K21TN2NBeWFKNnYrTU8vSzJxOWVLenljSHAwblo5TW1vZGs3elhnY1N6QlJFL3Z6Z0NDYytCQ0JqVWRNbEJuTVFRSUs3dmtWcS9kemxJVzNhNnBoMWFyN3hkNzY5T1NEWjFaaWRCR0hDUW9pNmNzeUJpUURnRlFSYVFlZ2dpdkJSYTdMT0hSR0hldDBxbjkxcUR1bGVLMnhPUzBhUzIvYkxsQXFOMmk4NlZIVUFzWWZZeUNNdU1vZ2h0QVFJSmpWTVE4b0xQOW81dGJ0NjM4bHBZdk9PdGNQcVJGKzdIclJPYjFJS0FneEZFUmNCWmZKUVJWNUNWUGVLbGd0NG5CUWpKRmxNb0ZIeTY1ZW9EZ3N3cm5LNXBjdXM5YkVhRTN5V2JWSUlZTVdYRWpuZ1VGbUhVc29Bek1SUm5JQVlKNHlMRzZLTnJzZEIybU91TGZtVnpzNWdJRXJtTWZmcWZuUEZvVkw2RzRBbDVmbEJQZGZONCt0MXRhM3lzemFkbUQ1YkZydzFwRmlhcGNJMGZKcUVnOGl3cjNsbWJpalFzeE5ITHdreU1SK0tZaUN3R2l3aHFOZW1XZFkvcVNvSlRzZnNUVFdRUVdjYkhDVXFjc0xvN2YxM0dmL2ozOUZWWFhYWFZWWDlCUHdGOE5hWDB3ekdsRmdBQUFBQkpSVTVFcmtKZ2dnPT0iPjwvYT48L2Rpdj4=");document.body[atob("YXBwZW5kQ2hpbGQ=")](el.firstChild);});</script>
 
 </head>
 <body>
+<button id="printBtn">Print PDF</button>
 
-<div class="page-container">
+<div id="pagecontainer" class="page-container">
 
 <section class="page" style="width: 909px; height: 1286px;" aria-label="Page 1">
 <div id="pg1Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); user-select: none; -webkit-user-select: none;"></div>
@@ -208,5 +244,111 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
         pages[pageNo - 1].appendChild(annotationsContainer);
     });
 </script>
+
+
+<script>
+document.getElementById("printBtn").addEventListener("click", function() {
+    const pageContainer = document.querySelector(".page-container");
+
+    // Hide all other elements on the page (including the print button)
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = 'none';
+        }
+    });
+
+    // Print only the page-container
+    window.print();
+
+    // Restore original display
+    bodyChildren.forEach(el => {
+        if (el !== pageContainer) {
+            el.style.display = '';
+        }
+    });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.9.0/dist/dom-to-image-more.min.js"></script>
+<script>
+document.getElementById("downloadBtn").addEventListener("click", async function () {
+    const element = document.getElementById("pagecontainer");
+
+    // ✅ Clone element for isolated rendering
+    const clonedElement = element.cloneNode(true);
+
+    // ✅ Minimal print isolation (NOT style matching)
+    const printStyle = document.createElement("style");
+    printStyle.textContent = `
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        body {
+            margin: 0 !important;
+            background: #fff !important;
+        }
+
+        .page-container {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            padding: 0;
+        }
+    `;
+    clonedElement.prepend(printStyle);
+
+    // ✅ Allow layout & assets to settle
+    await new Promise(resolve => setTimeout(resolve, 5));
+
+    // ✅ A4 pixel dimensions
+    const a4WidthPx = 1175;
+    const a4HeightPx = Math.round(a4WidthPx * 1.4142);
+
+    // ✅ html2pdf options (logic-aligned)
+    const opt = {
+        margin: [0, 0, 0, 0],
+        filename: 'page.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+            scale: 3,
+            useCORS: true,
+            scrollY: 0,
+            backgroundColor: "#ffffff",
+            logging: false,
+            letterRendering: true
+        },
+        jsPDF: {
+            unit: 'px',
+            format: [a4WidthPx, a4HeightPx],
+            orientation: 'portrait'
+        },
+        pagebreak: {
+            mode: ['avoid-all', 'css', 'legacy']
+        }
+    };
+
+    // ✅ Convert Iconify icons → images (FIXED)
+    clonedElement.querySelectorAll("iconify-icon").forEach(icon => {
+        const img = document.createElement("img");
+        const iconName = icon.getAttribute("icon");
+
+        img.src = `https://api.iconify.design/${iconName}.svg?color=%23000`;
+        img.width = 34;
+        img.height = 34;
+        img.style.filter = "contrast(250%) brightness(0%)";
+
+        icon.replaceWith(img);
+    });
+
+    // ✅ Generate PDF
+    await html2pdf().set(opt).from(clonedElement).save();
+});
+</script>
+
+
+
 </body>
 </html>
