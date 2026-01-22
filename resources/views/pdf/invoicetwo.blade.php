@@ -216,9 +216,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
 <span class="t s2" style="left:156px;bottom:1081px;">: </span>
 <span class="t s0" style="left:500px;bottom:838px;letter-spacing:0.17px;">{{ $invoice->candidate_name }}</span>
 <span class="t s6" style="left:525px;bottom:812px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
-<span class="t s6" style="left:525px;bottom:764px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
-<span class="t s6" style="left:525px;bottom:748px;letter-spacing:0.1px;">***************************************************** </span>
-<span class="t s6" style="left:525px;bottom:788px;letter-spacing:0.1px;">********************** </span></div>
+<span class="t s6" style="left:525px;bottom:764px;letter-spacing:0.1px;"></span>
+<span class="t s6" style="left:525px;bottom:748px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
+<span class="t s6" style="left:525px;bottom:788px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span></div>
 
 </div>
 
