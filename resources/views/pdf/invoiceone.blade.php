@@ -198,7 +198,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'Exclusive webinars with experienced HR managers,' : ''))
 }}
 </span>
-<span class="t s0" style="left:74px;bottom:560px;letter-spacing:0.13px;font-size:10px;">
+<span class="t s0" style="left:74px;bottom:555px;letter-spacing:0.13px;font-size:10px;">
 {{
     $invoice->package === 'career_starter' ? '' :
     ($invoice->package === 'growth_package' ? '' :
