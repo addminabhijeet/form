@@ -127,7 +127,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <body>
 <button id="printBtn">Print PDF</button>
 <button id="downloadBtn">Download PDF</button>
-<div class="page-container">
+<div id="pagecontainer" class="page-container">
 
 <section class="page" style="width: 909px; height: 1286px;" aria-label="Page 1">
 <div id="pg1Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); user-select: none; -webkit-user-select: none;"></div>
@@ -318,8 +318,7 @@ document.getElementById("printBtn").addEventListener("click", function() {
 <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.9.0/dist/dom-to-image-more.min.js"></script>
 <script>
 document.getElementById("downloadBtn").addEventListener("click", async function () {
-
-    const element = document.querySelector(".page-container");
+    const element = document.getElementById("pagecontainer");
 
     // ✅ Clone element for isolated rendering
     const clonedElement = element.cloneNode(true);
@@ -346,27 +345,12 @@ document.getElementById("downloadBtn").addEventListener("click", async function 
     `;
     clonedElement.prepend(printStyle);
 
-    // ✅ Attach clone to DOM (critical for html2canvas accuracy)
-    clonedElement.style.position = "fixed";
-    clonedElement.style.left = "-9999px";
-    document.body.appendChild(clonedElement);
-
     // ✅ Allow layout & assets to settle
-    await new Promise(resolve => setTimeout(resolve, 10));
+    await new Promise(resolve => setTimeout(resolve, 5));
 
     // ✅ A4 pixel dimensions
     const a4WidthPx = 1175;
     const a4HeightPx = Math.round(a4WidthPx * 1.4142);
-
-    // ✅ Convert Iconify icons → images
-    clonedElement.querySelectorAll("iconify-icon").forEach(icon => {
-        const img = document.createElement("img");
-        const iconName = icon.getAttribute("icon");
-        img.src = `https://api.iconify.design/${iconName}.svg`;
-        img.width = 34;
-        img.height = 34;
-        icon.replaceWith(img);
-    });
 
     // ✅ html2pdf options (logic-aligned)
     const opt = {
@@ -391,13 +375,24 @@ document.getElementById("downloadBtn").addEventListener("click", async function 
         }
     };
 
+    // ✅ Convert Iconify icons → images (FIXED)
+    clonedElement.querySelectorAll("iconify-icon").forEach(icon => {
+        const img = document.createElement("img");
+        const iconName = icon.getAttribute("icon");
+
+        img.src = `https://api.iconify.design/${iconName}.svg?color=%23000`;
+        img.width = 34;
+        img.height = 34;
+        img.style.filter = "contrast(250%) brightness(0%)";
+
+        icon.replaceWith(img);
+    });
+
     // ✅ Generate PDF
     await html2pdf().set(opt).from(clonedElement).save();
-
-    // ✅ Cleanup
-    document.body.removeChild(clonedElement);
 });
 </script>
+
 
 
 
