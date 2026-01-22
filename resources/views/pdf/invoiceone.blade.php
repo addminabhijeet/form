@@ -184,6 +184,13 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'Personalized digital card for professional branding,' : ''))
 }}
 </span>
+<span class="t s0" style="left:74px;bottom:565px;letter-spacing:0.13px;font-size:10px;">
+{{
+    $invoice->package === 'career_starter' ? '' :
+    ($invoice->package === 'growth_package' ? '' :
+    ($invoice->package === 'career_acceleration' ? 'Personalized digital card for professional branding,' : ''))
+}}
+</span>
 <span class="t s1" style="left:63px;bottom:223px;letter-spacing:0.2px;word-spacing:0.01px;">Payment Information (Bank Details): </span>
 <span class="t s2" style="left:266px;bottom:117px;letter-spacing:-0.11px;">925020015760863 </span>
 <span class="t s2" style="left:267px;bottom:141px;letter-spacing:-0.13px;">CURRENT ACCOUNT </span>
