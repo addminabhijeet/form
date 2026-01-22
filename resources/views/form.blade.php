@@ -68,8 +68,8 @@
                             <div class="col-md-6">
                                 <label for="invoice_number" class="form-label">Invoice Number</label>
                                 <input type="text" class="form-control" id="invoice_number" name="invoice_number"
-                                    value="{{ old('invoice_number', $invoice->invoice_number ?? ($invoiceNumber ?? '')) }}"
-                                    required>
+                                    value="{{ old('invoice_number', $invoice->invoice_number ?? $invoiceNumber) }}"
+                                    readonly>
                             </div>
 
                             <div class="col-md-6">
@@ -98,6 +98,14 @@
                             <input type="email" class="form-control" id="candidate_email" name="candidate_email"
                                 value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}" required>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
+                            <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
+                                maxlength="10" pattern="[0-9]{10}" inputmode="numeric"
+                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}" required>
+                        </div>
+
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
