@@ -22,10 +22,23 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return view('invoice.form', [
-            'invoiceNumber' => $this->generateInvoiceNumber()
-        ]);
+        $lastInvoice = Invoice::withTrashed()
+            ->where('invoice_number', 'like', 'NYS_A+%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        if ($lastInvoice) {
+            $lastSerial = (int) substr($lastInvoice->invoice_number, 6);
+            $newSerial = str_pad($lastSerial + 1, 4, '0', STR_PAD_LEFT);
+        } else {
+            $newSerial = '0001';
+        }
+
+        $invoiceNumber = 'NYS_A+' . $newSerial;
+
+        return view('invoice.form', compact('invoiceNumber'));
     }
+
 
     public function edit($id)
     {
