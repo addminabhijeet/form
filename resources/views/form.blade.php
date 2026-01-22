@@ -97,9 +97,24 @@
                             <label for="candidate_address" class="form-label">Candidate Address</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
                                 style="resize:none; overflow-y:hidden;"
-                                oninput="this.style.height=''; this.style.height=this.scrollHeight+'px'; if(this.value.split('\n').length>3)this.value=this.value.split('\n').slice(0,3).join('\n');"
+                                oninput="
+                                this.style.height='';
+                                this.style.height=this.scrollHeight+'px';
+
+                                let lines = this.value.split('\n');
+
+                                // limit to 3 lines
+                                if (lines.length > 3) {
+                                    lines = lines.slice(0, 3);
+                                }
+
+                                // limit each line to 36 characters
+                                lines = lines.map(line => line.substring(0, 36));
+
+                                this.value = lines.join('\n');"
                                 required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
+
 
 
                         <div class="mb-3">
