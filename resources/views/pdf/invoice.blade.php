@@ -141,7 +141,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:678px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? ' Personalized cover letter, Delivery in Word & PDF formats,' :
+    $invoice->package === 'career_starter' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
     ($invoice->package === 'growth_package' ? 'Personalized cover letter, Delivery in Word & PDF formats,' :
     ($invoice->package === 'career_acceleration' ? 'Personalized cover letter, Delivery in Word & PDF formats,' : ''))
 }}
@@ -155,9 +155,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:637px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? ' preparation, Complete LinkedIn profile' :
-    ($invoice->package === 'growth_package' ? ' preparation, Complete LinkedIn profile' :
-    ($invoice->package === 'career_acceleration' ? ' preparation, Complete LinkedIn profile' : ''))
+    $invoice->package === 'career_starter' ? 'preparation, Complete LinkedIn profile' :
+    ($invoice->package === 'growth_package' ? 'preparation, Complete LinkedIn profile' :
+    ($invoice->package === 'career_acceleration' ? 'preparation, Complete LinkedIn profile' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:616px;letter-spacing:0.12px;font-size:10px;">
