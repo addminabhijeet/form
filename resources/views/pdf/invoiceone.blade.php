@@ -250,8 +250,8 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     ($invoice->package === 'career_acceleration' ? 4999 : 0))
 }}</span>
 <span class="t s8" style="left:32px;bottom:1162px;letter-spacing:0.18px;">Invoice</span>
-<span class="t s9" style="left:98px;bottom:1162px;"># {{ $invoice->invoice_number }}</span>
-<span class="t s9" style="left:174px;bottom:1162px;letter-spacing:0.21px;"></span>
+<span class="t s9" style="left:98px;bottom:1162px;"># </span>
+<span class="t s9" style="left:174px;bottom:1162px;letter-spacing:0.21px;">{{ $invoice->invoice_number }}</span>
 <span class="t s8" style="left:174px;bottom:1131px;letter-spacing:0.15px;">{{ $invoice->invoice_date }}</span>
 <span class="t sa" style="left:32px;bottom:1196px;letter-spacing:1.1px;">INVOICE </span>
 <span class="t s8" style="left:32px;bottom:1131px;letter-spacing:0.16px;">Invoice Date </span>
