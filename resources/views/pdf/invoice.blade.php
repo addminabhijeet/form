@@ -174,6 +174,13 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
     ($invoice->package === 'career_acceleration' ? 'Complete LinkedIn profile optimization' : ''))
 }}
 </span>
+<span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;">
+{{
+    $invoice->package === 'career_starter' ? '' :
+    ($invoice->package === 'growth_package' ? 'One-on-one career guidance by a senior expert' :
+    ($invoice->package === 'career_acceleration' ? 'One-on-one career guidance by a senior expert' : ''))
+}}
+</span>
 <span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice # {{ $invoice->invoice_number }}</span>
 <span class="t s0" style="left:54px;bottom:1123px;letter-spacing:0.14px;">Invoice Date: {{ $invoice->invoice_date }}</span>
 <span class="t s0" style="left:54px;bottom:1102px;letter-spacing:0.15px;">Due Date: {{ $invoice->due_date }}</span>
