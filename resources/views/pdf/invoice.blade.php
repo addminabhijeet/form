@@ -169,16 +169,16 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? '' :
-    ($invoice->package === 'growth_package' ? '' :
-    ($invoice->package === 'career_acceleration' ? '' : ''))
+    $invoice->package === 'career_starter' ? 'Personalized digital card for professional branding, Real-world case study demonstrating expertise' :
+    ($invoice->package === 'growth_package' ? 'Personalized digital card for professional branding, Real-world case study demonstrating expertise' :
+    ($invoice->package === 'career_acceleration' ? 'Personalized digital card for professional branding, Real-world case study demonstrating expertise' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? '' :
-    ($invoice->package === 'growth_package' ? '' :
-    ($invoice->package === 'career_acceleration' ? '' : ''))
+    $invoice->package === 'career_starter' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' :
+    ($invoice->package === 'growth_package' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' :
+    ($invoice->package === 'career_acceleration' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' : ''))
 }}
 </span>
 <span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice # {{ $invoice->invoice_number }}</span>
