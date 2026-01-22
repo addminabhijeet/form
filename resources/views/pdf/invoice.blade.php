@@ -176,16 +176,16 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 </span>
 <span class="t s0" style="left:39px;bottom:596px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? ' Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' :
-    ($invoice->package === 'growth_package' ? ' Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' :
-    ($invoice->package === 'career_acceleration' ? ' Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' : ''))
+    $invoice->package === 'career_starter' ? 'Real-world case study demonstrating expertise,' :
+    ($invoice->package === 'growth_package' ? 'Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' :
+    ($invoice->package === 'career_acceleration' ? 'Real-world case study demonstrating expertise, Ongoing interview updates with top-tier companies' : ''))
 }}
 </span>
 <span class="t s0" style="left:39px;bottom:576px;letter-spacing:0.12px;font-size:10px;">
 {{
-    $invoice->package === 'career_starter' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' :
-    ($invoice->package === 'growth_package' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' :
-    ($invoice->package === 'career_acceleration' ? 'Exclusive webinars with experienced HR managers, Ongoing interview updates with top-tier companies' : ''))
+    $invoice->package === 'career_starter' ? 'Ongoing interview updates with top-tier companies' :
+    ($invoice->package === 'growth_package' ? 'Ongoing interview updates with top-tier companies' :
+    ($invoice->package === 'career_acceleration' ? 'Ongoing interview updates with top-tier companies' : ''))
 }}
 </span>
 <span class="t s0" style="left:54px;bottom:1143px;letter-spacing:0.15px;">Invoice # {{ $invoice->invoice_number }}</span>
