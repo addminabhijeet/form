@@ -44,10 +44,6 @@
                                 Edit
                             </a>
 
-                            <a id="downloadPdfLink" href="{{ route('invoice.download', $invoice->id ?? '') }}" download>
-                                Download
-                            </a>
-
                             <form action="{{ route('invoice.delete', $invoice->id) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Are you sure you want to delete this invoice?')">
                                 @csrf
