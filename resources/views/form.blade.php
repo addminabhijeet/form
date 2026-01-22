@@ -95,8 +95,12 @@
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
-                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="2" required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
+                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
+                                style="resize:none; overflow-y:hidden;"
+                                oninput="this.style.height=''; this.style.height=this.scrollHeight+'px'; if(this.value.split('\n').length>3)this.value=this.value.split('\n').slice(0,3).join('\n');"
+                                required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="package" class="form-label">Package</label>
