@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Validation\Rule;
 
 class InvoiceController extends Controller
 {
@@ -40,7 +41,11 @@ class InvoiceController extends Controller
     {
         // Validate input (aligned with form)
         $data = $request->validate([
-            'invoice_number'     => 'required|string|unique:invoices,invoice_number',
+            'invoice_number' => [
+                'required',
+                'string',
+                Rule::unique('invoices', 'invoice_number')->whereNull('deleted_at'),
+            ],
             'invoice_date'       => 'required|date',
             'due_date'           => 'required|date|after_or_equal:invoice_date',
             'candidate_name'     => 'required|string|max:255',
