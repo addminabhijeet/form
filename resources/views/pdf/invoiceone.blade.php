@@ -253,7 +253,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s6" style="left:91px;bottom:914px;letter-spacing:0.14px;">www.noryaan.com </span>
 <span class="t s7" style="left:66px;bottom:1017px;letter-spacing:-0.19px;">Bill From: </span>
 <span class="t s7" style="left:503px;bottom:1017px;letter-spacing:-0.17px;">Bill To: </span>
-<span class="t s0" style="left:503px;bottom:989px;letter-spacing:0.17px;">{{ $invoice->candidate_name }}</span>
+<span class="t s0" style="left:503px;bottom:989px;letter-spacing:0.17px;"><strong style="text-transform: uppercase;">{{ $invoice->candidate_name }}</strong></span>
 <span class="t s6" style="left:529px;bottom:962px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
 <span class="t s6" style="left:529px;bottom:912px;letter-spacing:0.1px;"></span>
 <span class="t s6" style="left:529px;bottom:876px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
