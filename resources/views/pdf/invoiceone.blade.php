@@ -280,14 +280,14 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s8" style="left:32px;bottom:1162px;letter-spacing:0.18px;">Invoice</span>
 <span class="t s9" style="left:98px;bottom:1162px;">#</span>
 <span class="t s9" style="left:174px;bottom:1162px;letter-spacing:0.21px;font-weight:700;">{{ $invoice->invoice_number }}</span>
-<span class="t s8" style="left:174px;bottom:1131px;letter-spacing:0.15px;">{{ $invoice->invoice_date }}</span>
+<span class="t s8" style="left:174px;bottom:1131px;letter-spacing:0.15px;">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('dmy') }}</span>
 <span class="t sa" style="left:32px;bottom:1196px;letter-spacing:1.1px;">INVOICE </span>
 <span class="t s8" style="left:32px;bottom:1131px;letter-spacing:0.16px;">Invoice Date </span>
 <span class="t s8" style="left:152px;bottom:1162px;">: </span>
 <span class="t s8" style="left:152px;bottom:1131px;">: </span>
 <span class="t s8" style="left:174px;bottom:1101px;letter-spacing:0.15px;"></span>
 <span class="t s8" style="left:32px;bottom:1101px;letter-spacing:0.18px;">Due Date</span>
-<span class="t s8" style="left:152px;bottom:1101px;">:    {{ $invoice->due_date }}</span></div>
+<span class="t s8" style="left:152px;bottom:1101px;">:    {{ \Carbon\Carbon::parse($invoice->due_date)->format('dmy') }}</span></div>
 
 </div>
 
