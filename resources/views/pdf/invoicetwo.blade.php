@@ -246,7 +246,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABhQAA0AAAA
 <span class="t s6" style="left:525px;bottom:812px;letter-spacing:0.1px;">{{ $invoice->candidate_email }}</span>
 <span class="t s6" style="left:525px;bottom:764px;letter-spacing:0.1px;"></span>
 <span class="t s6" style="left:525px;bottom:730px;letter-spacing:0.1px;">{{ $invoice->candidate_address }}</span>
-<span class="t s6" style="left:525px;bottom:788px;letter-spacing:0.1px;">+91{{ $invoice->candidate_mobile }}</span></div>
+<span class="t s6" style="left:525px;bottom:788px;letter-spacing:0.1px;">+91 {{ $invoice->candidate_mobile }}</span></div>
 
 </div>
 
