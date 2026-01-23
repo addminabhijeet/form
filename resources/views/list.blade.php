@@ -53,9 +53,6 @@
                             <td>{{ $invoice->candidate_email }}</td>
                             <td>{{ ucfirst(str_replace('_', ' ', $invoice->package)) }}</td>
                             <td>
-                                <a href="{{ route('invoice.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
-                                    View
-                                </a>
                                 <a href="{{ route('invoiceone.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
                                     View One
                                 </a>
