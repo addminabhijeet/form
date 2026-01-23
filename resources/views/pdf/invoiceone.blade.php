@@ -140,7 +140,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     $invoice->package === 'career_starter' ? 'Career Starter' :
     ($invoice->package === 'growth_package' ? 'Growth Package' :
     ($invoice->package === 'career_acceleration' ? 'Career Acceleration' : ''))
-}}<strong>
+}}</strong>
 </span>
 <span class="t s0" style="left:74px;bottom:699px;letter-spacing:0.13px;font-size:10px;">
 {{
