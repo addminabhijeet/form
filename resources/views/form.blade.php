@@ -311,11 +311,11 @@
                             window.location.href = editUrl;
                         } else {
                             // Email does not exist
-                            emailInput.classList.remove('border-success');
-                            emailInput.classList.add('border-danger');
+                            emailInput.classList.remove('border-danger');
+                            emailInput.classList.add('border-success');
                             emailNotice.textContent = "No existing candidate found";
-                            emailNotice.classList.remove('text-success');
-                            emailNotice.classList.add('text-danger');
+                            emailNotice.classList.remove('text-danger');
+                            emailNotice.classList.add('text-success');
                         }
                     })
                     .catch(err => console.error(err));
