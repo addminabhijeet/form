@@ -43,16 +43,28 @@
                 <div class="card p-4">
                     <h3 class="card-title mb-4 text-center">Invoice Form</h3>
 
-                    @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
 
-                    @error('field_name')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
 
                     <form method="POST"
                         action="{{ isset($invoice) ? route('invoice.update', $invoice->id) : route('invoice.submit') }}">
