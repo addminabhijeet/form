@@ -119,10 +119,11 @@
                         <div class="mb-3">
                             <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
                             <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
-                                maxlength="10" pattern="[0-9]{10}" inputmode="numeric"
+                                maxlength="20" inputmode="numeric"
                                 value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
-                                placeholder="10-digit mobile number" required>
+                                placeholder="Enter mobile number" required>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
@@ -181,6 +182,12 @@
         <a href="{{ route('invoice.list') }}" class="btn btn-primary">Invoice List</a>
     </div>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"></script>
+
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -211,6 +218,52 @@
             first.addEventListener('input', syncFullName);
             middle.addEventListener('input', syncFullName);
             last.addEventListener('input', syncFullName);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const input = document.querySelector("#candidate_mobile");
+
+            const iti = window.intlTelInput(input, {
+                initialCountry: "auto",
+                separateDialCode: true,
+                nationalMode: false,
+                formatOnDisplay: true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+                geoIpLookup: function(callback) {
+                    fetch("https://ipapi.co/json/")
+                        .then(res => res.json())
+                        .then(data => callback(data.country_code))
+                        .catch(() => callback("US"));
+                }
+            });
+
+            // 🔹 Load existing value (edit mode)
+            if (input.value) {
+                iti.setNumber(input.value);
+            }
+
+            // 🔁 Format as XXX-XXX-XXXX while typing
+            input.addEventListener('input', function() {
+                let digits = input.value.replace(/\D/g, '').substring(0, 10);
+                let formatted = digits;
+
+                if (digits.length > 3 && digits.length <= 6) {
+                    formatted = digits.slice(0, 3) + '-' + digits.slice(3);
+                } else if (digits.length > 6) {
+                    formatted = digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+                }
+
+                input.value = formatted;
+            });
+
+            // 🔁 On submit → save full international number
+            input.closest('form').addEventListener('submit', function() {
+                input.value = iti.getNumber(); // +1XXXXXXXXXX
+            });
+
         });
     </script>
 
