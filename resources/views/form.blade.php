@@ -92,46 +92,49 @@
                                     maxlength="20" inputmode="numeric"
                                     value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
                                     placeholder="Enter mobile number" required>
+
                             </div>
+
+
                         </div>
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
-                </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="Enter first name">
-                    </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name"
+                                    placeholder="Enter first name">
+                            </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" id="middle_name"
-                            placeholder="Enter middle name (optional)">
-                    </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" id="middle_name"
+                                    placeholder="Enter middle name (optional)">
+                            </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder="Enter last name">
-                    </div>
-                </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name">
+                            </div>
+                        </div>
 
-                <div class="mb-3">
-                    <label for="candidate_email" class="form-label">Candidate Email</label>
-                    <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-                        value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
-                        placeholder="example@email.com" required>
-                </div>
-
-
+                        <div class="mb-3">
+                            <label for="candidate_email" class="form-label">Candidate Email</label>
+                            <input type="email" class="form-control" id="candidate_email" name="candidate_email"
+                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
+                                placeholder="example@email.com" required>
+                        </div>
 
 
-                <div class="mb-3">
-                    <label for="candidate_address" class="form-label">Candidate Address</label>
-                    <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
-                        placeholder="Enter address (max 3 lines)" style="resize:none; overflow-y:hidden;"
-                        oninput="
+
+
+                        <div class="mb-3">
+                            <label for="candidate_address" class="form-label">Candidate Address</label>
+                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
+                                placeholder="Enter address (max 3 lines)" style="resize:none; overflow-y:hidden;"
+                                oninput="
                                 this.style.height='';
                                 this.style.height=this.scrollHeight+'px';
 
@@ -143,41 +146,41 @@
 
                                 lines = lines.map(line => line.substring(0, 36));
                                 this.value = lines.join('\n');"
-                        required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
+                                required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="package" class="form-label">Package</label>
+                            <select class="form-select" id="package" name="package" required>
+                                <option value="" disabled>Select Package</option>
+
+                                <option value="career_starter"
+                                    {{ old('package', $invoice->package ?? '') == 'career_starter' ? 'selected' : '' }}>
+                                    Career Starter
+                                </option>
+
+                                <option value="growth_package"
+                                    {{ old('package', $invoice->package ?? '') == 'growth_package' ? 'selected' : '' }}>
+                                    Growth Package
+                                </option>
+
+                                <option value="career_acceleration"
+                                    {{ old('package', $invoice->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
+                                    Career Acceleration
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                {{ isset($invoice) ? 'Update Invoice' : 'Submit Invoice' }}
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
-
-                <div class="mb-3">
-                    <label for="package" class="form-label">Package</label>
-                    <select class="form-select" id="package" name="package" required>
-                        <option value="" disabled>Select Package</option>
-
-                        <option value="career_starter"
-                            {{ old('package', $invoice->package ?? '') == 'career_starter' ? 'selected' : '' }}>
-                            Career Starter
-                        </option>
-
-                        <option value="growth_package"
-                            {{ old('package', $invoice->package ?? '') == 'growth_package' ? 'selected' : '' }}>
-                            Growth Package
-                        </option>
-
-                        <option value="career_acceleration"
-                            {{ old('package', $invoice->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
-                            Career Acceleration
-                        </option>
-                    </select>
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">
-                        {{ isset($invoice) ? 'Update Invoice' : 'Submit Invoice' }}
-                    </button>
-                </div>
-                </form>
-
             </div>
         </div>
-    </div>
     </div>
 
     <div class="text-center">
