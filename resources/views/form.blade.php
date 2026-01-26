@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
+                                <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
                                 <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
                                     maxlength="20" inputmode="numeric"
                                     value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
