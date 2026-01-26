@@ -305,30 +305,12 @@
                 fetch(`{{ route('invoice.checkEmail') }}?email=${encodeURIComponent(email)}`)
                     .then(res => res.json())
                     .then(res => {
-                        if (res.exists) {
-                            const d = res.data;
-
+                        if (res.exists && res.data.id) {
                             // Redirect to edit page for this invoice ID
-                            if (d.id) {
-                                const editUrl = `{{ url('/invoice') }}/${d.id}/edit`;
-                                window.location.href = editUrl;
-                                return; // stop further execution
-                            }
-
-                            // Fallback: if no ID returned, just fill the fields
-                            document.getElementById('candidate_mobile').value = d.candidate_mobile ?? '';
-                            document.getElementById('candidate_address').value = d.candidate_address ?? '';
-                            document.getElementById('package').value = d.package ?? '';
-                            document.getElementById('invoice_date').value = d.invoice_date ?? '';
-                            document.getElementById('due_date').value = d.due_date ?? '';
-                            document.getElementById('candidate_name').value = d.candidate_name ?? '';
-
-                            emailInput.classList.remove('border-danger');
-                            emailInput.classList.add('border-success');
-                            emailNotice.textContent = "Existing candidate data loaded";
-                            emailNotice.classList.remove('text-danger');
-                            emailNotice.classList.add('text-success');
+                            const editUrl = `{{ url('/invoice') }}/${res.data.id}/edit`;
+                            window.location.href = editUrl;
                         } else {
+                            // Email does not exist
                             emailInput.classList.remove('border-success');
                             emailInput.classList.add('border-danger');
                             emailNotice.textContent = "No existing candidate found";
@@ -343,6 +325,7 @@
             emailInput.addEventListener('mouseup', checkEmail);
         });
     </script>
+
 
 
 

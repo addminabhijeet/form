@@ -104,19 +104,14 @@ class InvoiceController extends Controller
             return response()->json([
                 'exists' => true,
                 'data' => [
-                    'id'                => $invoice->id, // <--- add ID here
-                    'candidate_mobile'  => $invoice->candidate_mobile,
-                    'candidate_address' => $invoice->candidate_address,
-                    'package'           => $invoice->package,
-                    'invoice_date'      => $invoice->invoice_date,
-                    'due_date'          => $invoice->due_date,
-                    'candidate_name'    => $invoice->candidate_name,
+                    'id' => $invoice->id, // return ID for redirect
                 ]
             ]);
         }
 
         return response()->json(['exists' => false]);
     }
+
 
 
 
