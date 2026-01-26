@@ -210,7 +210,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABswAA0AAAA
 <span class="t s0" style="left:56px;bottom:863px;letter-spacing:0.15px;">GSTIN : NULL </span><span class="t s0" style="left:288px;bottom:863px;letter-spacing:0.16px;">PAN : AAYFN8278K </span>
 <span class="t s0" style="left:491px;bottom:1008px;letter-spacing:0.12px;">{{ $invoice->candidate_name }}</span>
 <span class="t s0" style="left:491px;bottom:987px;letter-spacing:0.12px;">{{ $invoice->candidate_email }}</span>
-<span class="t s0" style="left:491px;bottom:966px;letter-spacing:0.12px;">+91{{ $invoice->candidate_mobile }}</span>
+<span class="t s0" style="left:491px;bottom:966px;letter-spacing:0.12px;">{{ $invoice->candidate_mobile }}</span>
 <span class="t s0" style="left:491px;bottom:946px;letter-spacing:0.12px;"></span>
 <span class="t s0" style="left:491px;bottom:923px;letter-spacing:0.12px;">{{ $invoice->candidate_address }}</span>
 <span class="t s0" style="left:491px;bottom:905px;letter-spacing:0.12px;"></span>
