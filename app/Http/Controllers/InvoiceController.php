@@ -90,6 +90,23 @@ class InvoiceController extends Controller
         return 'NYS_A' . $newNumber;
     }
 
+    public function checkEmail(Request $request)
+    {
+        $email = $request->query('email');
+
+        $invoice = Invoice::where('candidate_email', $email)->latest()->first();
+
+        if ($invoice) {
+            return response()->json([
+                'exists' => true,
+                'data' => $invoice
+            ]);
+        }
+
+        return response()->json(['exists' => false]);
+    }
+
+
 
     public function update(Request $request, $id)
     {

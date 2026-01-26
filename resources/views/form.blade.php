@@ -130,8 +130,6 @@
 
 
 
-
-
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
@@ -190,7 +188,6 @@
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
-    <script src="https://cdn.jsdelivr.net/npm/mailcheck@1.1.2/src/mailcheck.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"></script>
@@ -276,21 +273,28 @@
     </script>
 
     <script>
-        const emailInput = document.getElementById('candidate_email');
+        document.getElementById('candidate_email').addEventListener('blur', function() {
+            let email = this.value.trim();
+            if (!email) return;
 
-        emailInput.addEventListener('blur', function() {
-            Mailcheck.run({
-                email: emailInput.value,
-                suggested: function(suggestion) {
-                    let confirmChange = confirm(
-                        `Did you mean ${suggestion.full}?`
-                    );
+            fetch(`{{ route('invoice.checkEmail') }}?email=${email}`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.exists) {
+                        const d = res.data;
 
-                    if (confirmChange) {
-                        emailInput.value = suggestion.full;
+                        document.getElementById('candidate_mobile').value = d.candidate_mobile ?? '';
+                        document.getElementById('candidate_address').value = d.candidate_address ?? '';
+                        document.getElementById('package').value = d.package ?? '';
+                        document.getElementById('invoice_date').value = d.invoice_date ?? '';
+                        document.getElementById('due_date').value = d.due_date ?? '';
+                        document.getElementById('candidate_name').value = d.candidate_name ?? '';
+
+                        // Optional visual indicator
+                        document.getElementById('candidate_email')
+                            .classList.add('border-success');
                     }
-                }
-            });
+                });
         });
     </script>
 
