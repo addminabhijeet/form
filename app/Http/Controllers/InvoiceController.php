@@ -92,14 +92,25 @@ class InvoiceController extends Controller
 
     public function checkEmail(Request $request)
     {
-        $email = $request->query('email');
+        $request->validate([
+            'email' => 'required|email'
+        ]);
 
-        $invoice = Invoice::where('candidate_email', $email)->latest()->first();
+        $invoice = Invoice::where('candidate_email', $request->email)
+            ->latest()
+            ->first();
 
         if ($invoice) {
             return response()->json([
                 'exists' => true,
-                'data' => $invoice
+                'data' => [
+                    'candidate_mobile'  => $invoice->candidate_mobile,
+                    'candidate_address' => $invoice->candidate_address,
+                    'package'           => $invoice->package,
+                    'invoice_date'      => $invoice->invoice_date,
+                    'due_date'          => $invoice->due_date,
+                    'candidate_name'    => $invoice->candidate_name,
+                ]
             ]);
         }
 

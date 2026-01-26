@@ -273,30 +273,42 @@
     </script>
 
     <script>
-        document.getElementById('candidate_email').addEventListener('blur', function() {
-            let email = this.value.trim();
-            if (!email) return;
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('candidate_email');
+            if (!emailInput) return;
 
-            fetch(`{{ route('invoice.checkEmail') }}?email=${email}`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.exists) {
-                        const d = res.data;
+            emailInput.addEventListener('blur', function() {
+                const email = this.value.trim();
+                if (!email) return;
 
-                        document.getElementById('candidate_mobile').value = d.candidate_mobile ?? '';
-                        document.getElementById('candidate_address').value = d.candidate_address ?? '';
-                        document.getElementById('package').value = d.package ?? '';
-                        document.getElementById('invoice_date').value = d.invoice_date ?? '';
-                        document.getElementById('due_date').value = d.due_date ?? '';
-                        document.getElementById('candidate_name').value = d.candidate_name ?? '';
+                fetch(`{{ route('invoice.checkEmail') }}?email=${encodeURIComponent(email)}`)
+                    .then(response => response.json())
+                    .then(res => {
+                        if (res.exists) {
+                            const d = res.data;
 
-                        // Optional visual indicator
-                        document.getElementById('candidate_email')
-                            .classList.add('border-success');
-                    }
-                });
+                            document.getElementById('candidate_mobile').value = d.candidate_mobile ??
+                            '';
+                            document.getElementById('candidate_address').value = d.candidate_address ??
+                                '';
+                            document.getElementById('package').value = d.package ?? '';
+                            document.getElementById('invoice_date').value = d.invoice_date ?? '';
+                            document.getElementById('due_date').value = d.due_date ?? '';
+                            document.getElementById('candidate_name').value = d.candidate_name ?? '';
+
+                            emailInput.classList.remove('border-danger');
+                            emailInput.classList.add('border-success');
+                        } else {
+                            emailInput.classList.remove('border-success');
+                            emailInput.classList.add('border-danger');
+                        }
+                    })
+                    .catch(err => console.error('Email check failed:', err));
+            });
         });
     </script>
+
+
 
 
 </body>
