@@ -60,7 +60,7 @@ class InvoiceController extends Controller
                 'due_date'           => 'required|date|after_or_equal:invoice_date',
                 'candidate_name'     => 'required|string|max:255',
                 'candidate_email'    => 'required|email|max:255',
-                'candidate_mobile'   => 'required|digits:20',
+                'candidate_mobile'   => 'required|string',
                 'candidate_address'  => 'required|string',
                 'package'            => 'required|in:career_starter,growth_package,career_acceleration',
             ]);
@@ -135,7 +135,7 @@ class InvoiceController extends Controller
             'due_date'           => 'required|date|after_or_equal:invoice_date',
             'candidate_name'     => 'required|string|max:255',
             'candidate_email'    => 'required|email|max:255',
-            'candidate_mobile'   => 'required|digits:20',
+            'candidate_mobile'   => 'required|string',
             'candidate_address'  => 'required|string',
             'package'            => 'required|in:career_starter,growth_package,career_acceleration',
         ]);
