@@ -104,6 +104,7 @@ class InvoiceController extends Controller
             return response()->json([
                 'exists' => true,
                 'data' => [
+                    'id'                => $invoice->id, // <--- add ID here
                     'candidate_mobile'  => $invoice->candidate_mobile,
                     'candidate_address' => $invoice->candidate_address,
                     'package'           => $invoice->package,
@@ -116,6 +117,7 @@ class InvoiceController extends Controller
 
         return response()->json(['exists' => false]);
     }
+
 
 
 

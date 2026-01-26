@@ -291,27 +291,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const emailInput = document.getElementById('candidate_email');
             const emailNotice = document.getElementById('emailNotice');
-            const firstNameInput = document.getElementById('first_name');
-            const lastNameInput = document.getElementById('last_name');
-            const candidateNameInput = document.getElementById('candidate_name');
 
             if (!emailInput || !emailNotice) return;
-
-            const splitName = (fullName) => {
-                const parts = fullName.trim().split(' ');
-                if (parts.length === 2) {
-                    firstNameInput.value = parts[0];
-                    lastNameInput.value = parts[1];
-                } else {
-                    firstNameInput.value = parts[0] ?? '';
-                    lastNameInput.value = parts.slice(1).join(' ') ?? '';
-                }
-            };
-
-            // Fill name from old value on page load
-            if (candidateNameInput.value) {
-                splitName(candidateNameInput.value);
-            }
 
             const checkEmail = () => {
                 const email = emailInput.value.trim();
@@ -327,17 +308,20 @@
                         if (res.exists) {
                             const d = res.data;
 
+                            // Redirect to edit page for this invoice ID
+                            if (d.id) {
+                                const editUrl = `{{ url('/invoice') }}/${d.id}/edit`;
+                                window.location.href = editUrl;
+                                return; // stop further execution
+                            }
+
+                            // Fallback: if no ID returned, just fill the fields
                             document.getElementById('candidate_mobile').value = d.candidate_mobile ?? '';
                             document.getElementById('candidate_address').value = d.candidate_address ?? '';
                             document.getElementById('package').value = d.package ?? '';
                             document.getElementById('invoice_date').value = d.invoice_date ?? '';
                             document.getElementById('due_date').value = d.due_date ?? '';
-                            candidateNameInput.value = d.candidate_name ?? '';
-
-                            // Split candidate name into first/last if two words
-                            if (candidateNameInput.value) {
-                                splitName(candidateNameInput.value);
-                            }
+                            document.getElementById('candidate_name').value = d.candidate_name ?? '';
 
                             emailInput.classList.remove('border-danger');
                             emailInput.classList.add('border-success');
@@ -355,11 +339,11 @@
                     .catch(err => console.error(err));
             };
 
-            // Trigger check on input & mouseup
             emailInput.addEventListener('input', checkEmail);
             emailInput.addEventListener('mouseup', checkEmail);
         });
     </script>
+
 
 
 
