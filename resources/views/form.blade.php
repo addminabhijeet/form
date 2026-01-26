@@ -125,7 +125,9 @@
                             <input type="email" class="form-control" id="candidate_email" name="candidate_email"
                                 value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
                                 placeholder="example@email.com" required>
+                            <small id="emailNotice" class="form-text text-success mt-1"></small>
                         </div>
+
 
 
 
@@ -275,22 +277,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const emailInput = document.getElementById('candidate_email');
-            if (!emailInput) return;
+            const emailNotice = document.getElementById('emailNotice');
 
-            emailInput.addEventListener('blur', function() {
-                const email = this.value.trim();
-                if (!email) return;
+            if (!emailInput || !emailNotice) return;
+
+            const checkEmail = () => {
+                const email = emailInput.value.trim();
+                if (!email) {
+                    emailNotice.textContent = '';
+                    emailInput.classList.remove('border-success', 'border-danger');
+                    return;
+                }
 
                 fetch(`{{ route('invoice.checkEmail') }}?email=${encodeURIComponent(email)}`)
-                    .then(response => response.json())
+                    .then(res => res.json())
                     .then(res => {
                         if (res.exists) {
                             const d = res.data;
 
-                            document.getElementById('candidate_mobile').value = d.candidate_mobile ??
-                            '';
-                            document.getElementById('candidate_address').value = d.candidate_address ??
-                                '';
+                            document.getElementById('candidate_mobile').value = d.candidate_mobile ?? '';
+                            document.getElementById('candidate_address').value = d.candidate_address ?? '';
                             document.getElementById('package').value = d.package ?? '';
                             document.getElementById('invoice_date').value = d.invoice_date ?? '';
                             document.getElementById('due_date').value = d.due_date ?? '';
@@ -298,15 +304,26 @@
 
                             emailInput.classList.remove('border-danger');
                             emailInput.classList.add('border-success');
+                            emailNotice.textContent = "Existing candidate data loaded";
+                            emailNotice.classList.remove('text-danger');
+                            emailNotice.classList.add('text-success');
                         } else {
                             emailInput.classList.remove('border-success');
                             emailInput.classList.add('border-danger');
+                            emailNotice.textContent = "No existing candidate found";
+                            emailNotice.classList.remove('text-success');
+                            emailNotice.classList.add('text-danger');
                         }
                     })
-                    .catch(err => console.error('Email check failed:', err));
-            });
+                    .catch(err => console.error(err));
+            };
+
+            // Trigger check on input & mouseup
+            emailInput.addEventListener('input', checkEmail);
+            emailInput.addEventListener('mouseup', checkEmail);
         });
     </script>
+
 
 
 
