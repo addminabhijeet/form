@@ -279,8 +279,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             const emailInput = document.getElementById('candidate_email');
             const emailNotice = document.getElementById('emailNotice');
+            const firstNameInput = document.getElementById('first_name');
+            const lastNameInput = document.getElementById('last_name');
+            const candidateNameInput = document.getElementById('candidate_name');
 
             if (!emailInput || !emailNotice) return;
+
+            const splitName = (fullName) => {
+                const parts = fullName.trim().split(' ');
+                if (parts.length === 2) {
+                    firstNameInput.value = parts[0];
+                    lastNameInput.value = parts[1];
+                } else {
+                    firstNameInput.value = parts[0] ?? '';
+                    lastNameInput.value = parts.slice(1).join(' ') ?? '';
+                }
+            };
+
+            // Fill name from old value on page load
+            if (candidateNameInput.value) {
+                splitName(candidateNameInput.value);
+            }
 
             const checkEmail = () => {
                 const email = emailInput.value.trim();
@@ -301,7 +320,12 @@
                             document.getElementById('package').value = d.package ?? '';
                             document.getElementById('invoice_date').value = d.invoice_date ?? '';
                             document.getElementById('due_date').value = d.due_date ?? '';
-                            document.getElementById('candidate_name').value = d.candidate_name ?? '';
+                            candidateNameInput.value = d.candidate_name ?? '';
+
+                            // Split candidate name into first/last if two words
+                            if (candidateNameInput.value) {
+                                splitName(candidateNameInput.value);
+                            }
 
                             emailInput.classList.remove('border-danger');
                             emailInput.classList.add('border-success');
