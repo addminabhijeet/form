@@ -86,6 +86,14 @@
                                     placeholder="Select due date" required>
                             </div>
 
+                            <div class="col-md-6">
+                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
+                            <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
+                                maxlength="20" inputmode="numeric"
+                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
+                                placeholder="Enter mobile number" required>
+                        </div>
+
                             <input type="hidden" id="candidate_name" name="candidate_name"
                                 value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
                         </div>
@@ -116,13 +124,7 @@
                                 placeholder="example@email.com" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
-                            <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
-                                maxlength="20" inputmode="numeric"
-                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
-                                placeholder="Enter mobile number" required>
-                        </div>
+
 
 
                         <div class="mb-3">
@@ -130,17 +132,17 @@
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
                                 placeholder="Enter address (max 3 lines)" style="resize:none; overflow-y:hidden;"
                                 oninput="
-                this.style.height='';
-                this.style.height=this.scrollHeight+'px';
+                                this.style.height='';
+                                this.style.height=this.scrollHeight+'px';
 
-                let lines = this.value.split('\n');
+                                let lines = this.value.split('\n');
 
-                if (lines.length > 3) {
-                    lines = lines.slice(0, 3);
-                }
+                                if (lines.length > 3) {
+                                    lines = lines.slice(0, 3);
+                                }
 
-                lines = lines.map(line => line.substring(0, 36));
-                this.value = lines.join('\n');"
+                                lines = lines.map(line => line.substring(0, 36));
+                                this.value = lines.join('\n');"
                                 required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
 
