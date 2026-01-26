@@ -85,18 +85,18 @@
                                     value="{{ old('due_date', $invoice->due_date ?? '') }}"
                                     placeholder="Select due date" required>
                             </div>
+                        </div>
 
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
                                 <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
                                     maxlength="20" inputmode="numeric"
                                     value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
                                     placeholder="Enter mobile number" required>
-
                             </div>
-
-
                         </div>
+
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
