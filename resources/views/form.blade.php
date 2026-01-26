@@ -54,8 +54,6 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
-
-
                     <form method="POST"
                         action="{{ isset($invoice) ? route('invoice.update', $invoice->id) : route('invoice.submit') }}">
                         @csrf
@@ -69,13 +67,14 @@
                                 <label for="invoice_number" class="form-label">Invoice Number</label>
                                 <input type="text" class="form-control" id="invoice_number" name="invoice_number"
                                     value="{{ old('invoice_number', $invoice->invoice_number ?? $invoiceNumber) }}"
-                                    readonly>
+                                    placeholder="Auto-generated invoice number" readonly>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="invoice_date" class="form-label">Invoice Date</label>
                                 <input type="date" class="form-control" id="invoice_date" name="invoice_date"
-                                    value="{{ old('invoice_date', $invoice->invoice_date ?? '') }}" required>
+                                    value="{{ old('invoice_date', $invoice->invoice_date ?? '') }}"
+                                    placeholder="Select invoice date" required>
                             </div>
                         </div>
 
@@ -83,69 +82,66 @@
                             <div class="col-md-6">
                                 <label for="due_date" class="form-label">Due Date</label>
                                 <input type="date" class="form-control" id="due_date" name="due_date"
-                                    value="{{ old('due_date', $invoice->due_date ?? '') }}" required>
+                                    value="{{ old('due_date', $invoice->due_date ?? '') }}"
+                                    placeholder="Select due date" required>
                             </div>
 
                             <input type="hidden" id="candidate_name" name="candidate_name"
                                 value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
-
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="first_name">
+                                <input type="text" class="form-control" id="first_name"
+                                    placeholder="Enter first name">
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control" id="middle_name">
+                                <input type="text" class="form-control" id="middle_name"
+                                    placeholder="Enter middle name (optional)">
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name">
+                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name">
                             </div>
                         </div>
-
 
                         <div class="mb-3">
                             <label for="candidate_email" class="form-label">Candidate Email</label>
                             <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}" required>
+                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
+                                placeholder="example@email.com" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
                             <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
                                 maxlength="10" pattern="[0-9]{10}" inputmode="numeric"
-                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}" required>
+                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
+                                placeholder="10-digit mobile number" required>
                         </div>
-
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
-                                style="resize:none; overflow-y:hidden;"
+                                placeholder="Enter address (max 3 lines)" style="resize:none; overflow-y:hidden;"
                                 oninput="
-                                this.style.height='';
-                                this.style.height=this.scrollHeight+'px';
+                this.style.height='';
+                this.style.height=this.scrollHeight+'px';
 
-                                let lines = this.value.split('\n');
+                let lines = this.value.split('\n');
 
-                                // limit to 3 lines
-                                if (lines.length > 3) {
-                                    lines = lines.slice(0, 3);
-                                }
+                if (lines.length > 3) {
+                    lines = lines.slice(0, 3);
+                }
 
-                                // limit each line to 36 characters
-                                lines = lines.map(line => line.substring(0, 36));
-
-                                this.value = lines.join('\n');"
+                lines = lines.map(line => line.substring(0, 36));
+                this.value = lines.join('\n');"
                                 required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
-
-
 
                         <div class="mb-3">
                             <label for="package" class="form-label">Package</label>
@@ -175,6 +171,7 @@
                             </button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
