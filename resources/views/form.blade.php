@@ -86,12 +86,28 @@
                                     value="{{ old('due_date', $invoice->due_date ?? '') }}" required>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="candidate_name" class="form-label">Candidate Name</label>
-                                <input type="text" class="form-control" id="candidate_name" name="candidate_name"
-                                    value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}" required>
+                            <input type="hidden" id="candidate_name" name="candidate_name"
+                                value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
+
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" id="middle_name">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name">
                             </div>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="candidate_email" class="form-label">Candidate Email</label>
@@ -170,6 +186,36 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const fullNameInput = document.getElementById('candidate_name');
+            const first = document.getElementById('first_name');
+            const middle = document.getElementById('middle_name');
+            const last = document.getElementById('last_name');
+
+            // 🔹 Split full name into parts (on load)
+            if (fullNameInput.value) {
+                let parts = fullNameInput.value.trim().split(/\s+/);
+                first.value = parts[0] || '';
+                last.value = parts.length > 1 ? parts[parts.length - 1] : '';
+                middle.value = parts.length > 2 ? parts.slice(1, -1).join(' ') : '';
+            }
+
+            // 🔁 Combine names back into candidate_name
+            function syncFullName() {
+                fullNameInput.value = [first.value, middle.value, last.value]
+                    .filter(Boolean)
+                    .join(' ')
+                    .trim();
+            }
+
+            first.addEventListener('input', syncFullName);
+            middle.addEventListener('input', syncFullName);
+            last.addEventListener('input', syncFullName);
+        });
+    </script>
 
 </body>
 
