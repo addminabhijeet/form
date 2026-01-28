@@ -105,15 +105,37 @@
                                     placeholder="Enter Paid Amount" max="2999" required>
                             </div>
                         </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
+                                <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
+                                    maxlength="20" inputmode="numeric"
+                                    value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
+                                    placeholder="Enter mobile number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="package" class="form-label">Package</label>
+                                <select class="form-select" id="package" name="package" required>
+                                    <option value="" disabled>Select Package</option>
 
-                        <div class="mb-3">
-                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
-                            <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
-                                maxlength="20" inputmode="numeric"
-                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
-                                placeholder="Enter mobile number" required>
+                                    <option value="career_starter"
+                                        {{ old('package', $invoice->package ?? '') == 'career_starter' ? 'selected' : '' }}>
+                                        Career Starter
+                                    </option>
+
+                                    <option value="growth_package"
+                                        {{ old('package', $invoice->package ?? '') == 'growth_package' ? 'selected' : '' }}>
+                                        Growth Package
+                                    </option>
+
+                                    <option value="career_acceleration"
+                                        {{ old('package', $invoice->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
+                                        Career Acceleration
+                                    </option>
+                                </select>
+                            </div>
                         </div>
-
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
@@ -133,16 +155,17 @@
 
                             <div class="col-md-4">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name">
+                                <input type="text" class="form-control" id="last_name"
+                                    placeholder="Enter last name">
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
-                            <input type="text" class="form-control w-100" id="candidate_mobile"
-                                name="candidate_mobile" maxlength="20" inputmode="numeric"
-                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
-                                placeholder="Enter mobile number" required>
+                            <label for="candidate_email" class="form-label">Candidate Email</label>
+                            <input type="email" class="form-control" id="candidate_email" name="candidate_email"
+                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
+                                placeholder="example@email.com" required>
+                            <small id="emailNotice" class="form-text text-success mt-1"></small>
                         </div>
 
                         <div class="mb-3">
@@ -164,27 +187,7 @@
                                 required>{{ old('candidate_address', $invoice->candidate_address ?? '') }}</textarea>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="package" class="form-label">Package</label>
-                            <select class="form-select" id="package" name="package" required>
-                                <option value="" disabled>Select Package</option>
 
-                                <option value="career_starter"
-                                    {{ old('package', $invoice->package ?? '') == 'career_starter' ? 'selected' : '' }}>
-                                    Career Starter
-                                </option>
-
-                                <option value="growth_package"
-                                    {{ old('package', $invoice->package ?? '') == 'growth_package' ? 'selected' : '' }}>
-                                    Growth Package
-                                </option>
-
-                                <option value="career_acceleration"
-                                    {{ old('package', $invoice->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
-                                    Career Acceleration
-                                </option>
-                            </select>
-                        </div>
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">
