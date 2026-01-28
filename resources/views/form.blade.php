@@ -138,11 +138,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="candidate_email" class="form-label">Candidate Email</label>
-                            <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-                                value="{{ old('candidate_email', $invoice->candidate_email ?? '') }}"
-                                placeholder="example@email.com" required>
-                            <small id="emailNotice" class="form-text text-success mt-1"></small>
+                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label>
+                            <input type="text" class="form-control w-100" id="candidate_mobile"
+                                name="candidate_mobile" maxlength="20" inputmode="numeric"
+                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
+                                placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="mb-3">
