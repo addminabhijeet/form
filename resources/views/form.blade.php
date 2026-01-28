@@ -440,17 +440,13 @@
 
             emailInput.addEventListener('input', function() {
                 let value = this.value.toLowerCase(); // force lowercase
-
-                // Remove any extra '@' after the first one
-                const atIndex = value.indexOf('@');
-                if (atIndex !== -1) {
-                    // Keep only the first '@', remove all others
-                    let beforeAt = value.slice(0, atIndex);
-                    let afterAt = value.slice(atIndex + 1).replace(/@/g, '');
-                    value = beforeAt + '@' + afterAt;
-                }
-
                 let parts = value.split('@');
+
+                // allow only the first '@', remove any additional '@'
+                if (parts.length > 2) {
+                    // join everything after first '@' without adding another '@'
+                    parts = [parts[0], parts.slice(1).join('')];
+                }
 
                 // before '@': letters, numbers, -, _, .
                 let local = parts[0].replace(/[^a-z0-9\-_\.]/g, '');
@@ -459,11 +455,11 @@
                 let domain = parts[1] || '';
                 domain = domain.replace(/[^a-z\-_\.]/g, '');
 
-                // set final value
                 this.value = domain ? local + '@' + domain : local;
             });
         });
     </script>
+
 
 
 
