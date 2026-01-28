@@ -336,30 +336,57 @@
             const dueDate = document.getElementById('due_date');
             const installWrapper = document.getElementById('installAmtWrapper');
             const installAmt = document.getElementById('install_amt');
+            const packageSelect = document.getElementById('package');
+
+            // Package-wise max amounts
+            const packageLimits = {
+                career_starter: 2999,
+                growth_package: 3999,
+                career_acceleration: 4999
+            };
+
+            function getMaxAmount() {
+                return packageLimits[packageSelect.value] || 0;
+            }
 
             function toggleInstallAmt() {
                 if (dueDate.value) {
                     installWrapper.style.display = 'block';
+                    updateMaxAmount();
                 } else {
                     installWrapper.style.display = 'none';
                     installAmt.value = '';
                 }
             }
 
-            // Initial check (edit mode)
+            function updateMaxAmount() {
+                const max = getMaxAmount();
+                installAmt.max = max;
+
+                if (installAmt.value && installAmt.value > max) {
+                    installAmt.value = max;
+                }
+            }
+
+            // Initial state (edit mode support)
             toggleInstallAmt();
 
-            // Show/Hide on date change
+            // Show/Hide based on due date
             dueDate.addEventListener('change', toggleInstallAmt);
 
-            // Restrict amount <= 3999
+            // Update max when package changes
+            packageSelect.addEventListener('change', updateMaxAmount);
+
+            // Enforce max while typing
             installAmt.addEventListener('input', function() {
-                if (this.value > 3999) {
-                    this.value = 3999;
+                const max = getMaxAmount();
+                if (this.value > max) {
+                    this.value = max;
                 }
             });
         });
     </script>
+
 
 
 
