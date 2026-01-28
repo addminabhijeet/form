@@ -145,11 +145,6 @@
                             <small id="emailNotice" class="form-text text-success mt-1"></small>
                         </div>
 
-
-
-
-
-
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
