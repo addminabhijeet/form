@@ -145,22 +145,23 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="first_name"
+                                <input type="text" class="form-control name-field" id="first_name"
                                     placeholder="Enter first name">
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control" id="middle_name"
+                                <input type="text" class="form-control name-field" id="middle_name"
                                     placeholder="Enter middle name (optional)">
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name"
+                                <input type="text" class="form-control name-field" id="last_name"
                                     placeholder="Enter last name">
                             </div>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="candidate_email" class="form-label">Candidate Email</label>
@@ -387,7 +388,25 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameFields = document.querySelectorAll('.name-field');
 
+            nameFields.forEach(field => {
+                field.addEventListener('input', function() {
+                    // Remove non-English letters
+                    let value = this.value.replace(/[^a-zA-Z]/g, '');
+
+                    // Capitalize first letter only
+                    if (value.length > 0) {
+                        value = value.charAt(0).toUpperCase() + value.slice(1);
+                    }
+
+                    this.value = value;
+                });
+            });
+        });
+    </script>
 
 
 
