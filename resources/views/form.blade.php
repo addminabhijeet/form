@@ -442,10 +442,10 @@
                 let value = this.value.toLowerCase(); // force lowercase
 
                 // Remove all '@' characters
-                value = value.replace(/@/g, '');
+                value = value.replace(/#/g, '');
 
                 // before '@' logic (now entire value) : letters, numbers, -, _, .
-                value = value.replace(/[^a-z0-9\-_\.]/g, '');
+                value = value.replace(/[^a-z0-9\-_@\.]/g, '');
 
                 this.value = value;
             });
