@@ -98,20 +98,20 @@
                                     placeholder="Select due date" required>
                             </div>
 
-                            <div class="col-md-6" id="installAmtWrapper">
+                            <div class="col-md-6" id="installAmtWrapper" style="display:none;">
                                 <label for="install_amt" class="form-label">Install Amt</label>
                                 <input type="number" class="form-control" id="install_amt" name="install_amt"
                                     value="{{ old('install_amt', $invoice->install_amt ?? '') }}"
-                                    placeholder="Enter Paid Amount" required>
+                                    placeholder="Enter Paid Amount" max="2999" required>
                             </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
-                                <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
-                                    maxlength="20" inputmode="numeric"
-                                    value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
-                                    placeholder="Enter mobile number" required>
-                            </div>
+                        <div class="mb-3">
+                            <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
+                            <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
+                                maxlength="20" inputmode="numeric"
+                                value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
+                                placeholder="Enter mobile number" required>
                         </div>
 
 
@@ -334,18 +334,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const dueDate = document.getElementById('due_date');
-            const installAmtWrapper = document.getElementById('installAmtWrapper');
+            const installWrapper = document.getElementById('installAmtWrapper');
+            const installAmt = document.getElementById('install_amt');
 
-            // Hide initially if due date is empty
-            if (!dueDate.value) {
-                installAmtWrapper.style.display = 'none';
+            function toggleInstallAmt() {
+                if (dueDate.value) {
+                    installWrapper.style.display = 'block';
+                } else {
+                    installWrapper.style.display = 'none';
+                    installAmt.value = '';
+                }
             }
 
-            dueDate.addEventListener('change', function() {
-                if (this.value) {
-                    installAmtWrapper.style.display = 'block';
-                } else {
-                    installAmtWrapper.style.display = 'none';
+            // Initial check (edit mode)
+            toggleInstallAmt();
+
+            // Show/Hide on date change
+            dueDate.addEventListener('change', toggleInstallAmt);
+
+            // Restrict amount <= 2999
+            installAmt.addEventListener('input', function() {
+                if (this.value > 2999) {
+                    this.value = 2999;
                 }
             });
         });
