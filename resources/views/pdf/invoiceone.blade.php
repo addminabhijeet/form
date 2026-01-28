@@ -234,7 +234,6 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s3" style="left:762px;bottom:496px;letter-spacing:0.17px;">
 ₹{{ $invoice->install_amt }}</span>
 <span class="t s3" style="left:762px;bottom:377px;letter-spacing:0.17px;">
-₹
 @php
     $prices = [
         'career_starter' => 2999,
@@ -245,8 +244,7 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
     $total = $prices[$invoice->package] ?? 0;
     $paid = $invoice->install_amt ?? 0;
 @endphp
-
-{{ max($total - $paid, 0) }}
+₹{{ max($total - $paid, 0) }}
 </span>
 <span class="t s5" style="left:301px;bottom:379px;letter-spacing:-0.08px;">Balance Amount </span>
 <span class="t s0" style="left:66px;bottom:989px;letter-spacing:0.18px;">NORYAAN SYSTEMS </span>
