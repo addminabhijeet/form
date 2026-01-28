@@ -92,22 +92,6 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="due_date" class="form-label">Due Date</label>
-                                <input type="date" class="form-control" id="due_date" name="due_date"
-                                    value="{{ old('due_date', $invoice->due_date ?? '') }}"
-                                    placeholder="Select due date" required>
-                            </div>
-
-                            <div class="col-md-6" id="installAmtWrapper" style="display:none;">
-                                <label for="install_amt" class="form-label">Installment Amount</label>
-                                <input type="number" class="form-control" id="install_amt" name="install_amt"
-                                    value="{{ old('install_amt', $invoice->install_amt ?? '') }}"
-                                    placeholder="Enter Paid Amount" max="3999" required>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
                                 <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
                                 <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
                                     maxlength="20" inputmode="numeric"
@@ -136,6 +120,24 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="due_date" class="form-label">Due Date</label>
+                                <input type="date" class="form-control" id="due_date" name="due_date"
+                                    value="{{ old('due_date', $invoice->due_date ?? '') }}"
+                                    placeholder="Select due date" required>
+                            </div>
+
+                            <div class="col-md-6" id="installAmtWrapper" style="display:none;">
+                                <label for="install_amt" class="form-label">Installment Amount</label>
+                                <input type="number" class="form-control" id="install_amt" name="install_amt"
+                                    value="{{ old('install_amt', $invoice->install_amt ?? '') }}"
+                                    placeholder="Enter Paid Amount" max="3999" required>
+                            </div>
+                        </div>
+
+
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">

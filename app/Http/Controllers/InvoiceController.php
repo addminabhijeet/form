@@ -61,7 +61,7 @@ class InvoiceController extends Controller
                 'candidate_name'     => 'required|string|max:255',
                 'candidate_email'    => 'required|email|max:255',
                 'candidate_mobile'   => 'required|string',
-                'install_amt' => 'nullable|numeric|max:3999',
+                'install_amt' => 'nullable|numeric|max:4999',
                 'candidate_address'  => 'required|string',
                 'package'            => 'required|in:career_starter,growth_package,career_acceleration',
             ]);
@@ -135,7 +135,7 @@ class InvoiceController extends Controller
             'candidate_email'    => 'required|email|max:255',
             'candidate_mobile'   => 'required|string',
             'candidate_address'  => 'required|string',
-            'install_amt' => 'nullable|numeric|max:3999',
+            'install_amt' => 'nullable|numeric|max:4999',
             'package'            => 'required|in:career_starter,growth_package,career_acceleration',
         ]);
 
