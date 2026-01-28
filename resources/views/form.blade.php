@@ -152,7 +152,7 @@
                             <div class="col-md-4">
                                 <label class="form-label">Middle Name</label>
                                 <input type="text" class="form-control name-field" id="middle_name"
-                                    placeholder="Enter middle name (optional)">
+                                    placeholder="Enter middle name">
                             </div>
 
                             <div class="col-md-4">
