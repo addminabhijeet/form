@@ -98,17 +98,22 @@
                                     placeholder="Select due date" required>
                             </div>
 
+                            <div class="col-md-6" id="installAmtWrapper">
+                                <label for="install_amt" class="form-label">Install Amt</label>
+                                <input type="number" class="form-control" id="install_amt" name="install_amt"
+                                    value="{{ old('install_amt', $invoice->install_amt ?? '') }}"
+                                    placeholder="Enter Paid Amount" required>
+                            </div>
+
                             <div class="col-md-6">
                                 <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
                                 <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
                                     maxlength="20" inputmode="numeric"
                                     value="{{ old('candidate_mobile', $invoice->candidate_mobile ?? '') }}"
                                     placeholder="Enter mobile number" required>
-
                             </div>
-
-
                         </div>
+
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $invoice->candidate_name ?? '') }}">
@@ -326,6 +331,25 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dueDate = document.getElementById('due_date');
+            const installAmtWrapper = document.getElementById('installAmtWrapper');
+
+            // Hide initially if due date is empty
+            if (!dueDate.value) {
+                installAmtWrapper.style.display = 'none';
+            }
+
+            dueDate.addEventListener('change', function() {
+                if (this.value) {
+                    installAmtWrapper.style.display = 'block';
+                } else {
+                    installAmtWrapper.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 
 

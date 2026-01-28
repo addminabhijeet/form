@@ -16,9 +16,10 @@ class Invoice extends Model
         'due_date',
         'candidate_name',
         'candidate_email',
-        'candidate_mobile', 
+        'candidate_mobile',
         'candidate_address',
         'package',
+        'install_amt',
     ];
 
     protected $dates = ['deleted_at'];

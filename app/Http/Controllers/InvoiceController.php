@@ -57,10 +57,11 @@ class InvoiceController extends Controller
                     Rule::unique('invoices', 'invoice_number')->whereNull('deleted_at'),
                 ],
                 'invoice_date'       => 'required|date',
-                'due_date'           => 'required|date|after_or_equal:invoice_date',
+                'due_date'           => 'date|after_or_equal:invoice_date',
                 'candidate_name'     => 'required|string|max:255',
                 'candidate_email'    => 'required|email|max:255',
                 'candidate_mobile'   => 'required|string',
+                'install_amt'   => 'string',
                 'candidate_address'  => 'required|string',
                 'package'            => 'required|in:career_starter,growth_package,career_acceleration',
             ]);
@@ -129,11 +130,12 @@ class InvoiceController extends Controller
                     ->whereNull('deleted_at'),
             ],
             'invoice_date'       => 'required|date',
-            'due_date'           => 'required|date|after_or_equal:invoice_date',
+            'due_date'           => 'date|after_or_equal:invoice_date',
             'candidate_name'     => 'required|string|max:255',
             'candidate_email'    => 'required|email|max:255',
             'candidate_mobile'   => 'required|string',
             'candidate_address'  => 'required|string',
+            'install_amt'   => 'string',
             'package'            => 'required|in:career_starter,growth_package,career_acceleration',
         ]);
 
