@@ -232,17 +232,22 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAABmwAA0AAAA
 <span class="t s5" style="left:261px;bottom:440px;letter-spacing:-0.08px;">Instalment Paid Amount </span>
 <span class="t s5" style="left:328px;bottom:499px;letter-spacing:-0.07px;">Sub Total </span>
 <span class="t s3" style="left:762px;bottom:496px;letter-spacing:0.17px;">
-₹{{
-    $invoice->package === 'career_starter' ? 2999 :
-    ($invoice->package === 'growth_package' ? 3999 :
-    ($invoice->package === 'career_acceleration' ? 4999 : 0))
-}}</span>
+₹{{ $invoice->install_amt }}</span>
 <span class="t s3" style="left:762px;bottom:377px;letter-spacing:0.17px;">
-₹{{
-    $invoice->package === 'career_starter' ? 2999 :
-    ($invoice->package === 'growth_package' ? 3999 :
-    ($invoice->package === 'career_acceleration' ? 4999 : 0))
-}}</span>
+₹
+@php
+    $prices = [
+        'career_starter' => 2999,
+        'growth_package' => 3999,
+        'career_acceleration' => 4999,
+    ];
+
+    $total = $prices[$invoice->package] ?? 0;
+    $paid = $invoice->install_amt ?? 0;
+@endphp
+
+{{ max($total - $paid, 0) }}
+</span>
 <span class="t s5" style="left:301px;bottom:379px;letter-spacing:-0.08px;">Balance Amount </span>
 <span class="t s0" style="left:66px;bottom:989px;letter-spacing:0.18px;">NORYAAN SYSTEMS </span>
 <span class="t s0" style="left:229px;bottom:989px;letter-spacing:0.15px;">LLP. </span>
