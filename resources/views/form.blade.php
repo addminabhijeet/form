@@ -409,6 +409,30 @@
     </script>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const invoiceDate = document.getElementById('invoice_date');
+            const dueDate = document.getElementById('due_date');
+
+            function syncDueDateMin() {
+                if (invoiceDate.value) {
+                    // Restrict due date to invoice date or later
+                    dueDate.min = invoiceDate.value;
+
+                    // If due date is earlier, auto-correct it
+                    if (dueDate.value && dueDate.value < invoiceDate.value) {
+                        dueDate.value = invoiceDate.value;
+                    }
+                }
+            }
+
+            // Initial check (edit mode)
+            syncDueDateMin();
+
+            // Update restriction when invoice date changes
+            invoiceDate.addEventListener('change', syncDueDateMin);
+        });
+    </script>
 
 
 
