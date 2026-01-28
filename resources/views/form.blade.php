@@ -434,7 +434,31 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('candidate_email');
 
+            emailInput.addEventListener('input', function() {
+                let value = this.value.toLowerCase(); // force lowercase
+                let parts = value.split('@');
+
+                // allow only one '@'
+                if (parts.length > 2) {
+                    value = parts[0] + '@' + parts[1];
+                    parts = value.split('@');
+                }
+
+                // before '@': letters, numbers, -, _, .
+                let local = parts[0].replace(/[^a-z0-9\-_\.]/g, '');
+
+                // after '@': letters only, allow -, _, .
+                let domain = parts[1] || '';
+                domain = domain.replace(/[^a-z\-_\.]/g, '');
+
+                this.value = domain ? local + '@' + domain : local;
+            });
+        });
+    </script>
 
 
 </body>
