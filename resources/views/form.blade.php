@@ -102,7 +102,7 @@
                                 <label for="install_amt" class="form-label">Installment Amount</label>
                                 <input type="number" class="form-control" id="install_amt" name="install_amt"
                                     value="{{ old('install_amt', $invoice->install_amt ?? '') }}"
-                                    placeholder="Enter Paid Amount" max="2999" required>
+                                    placeholder="Enter Paid Amount" max="3999" required>
                             </div>
                         </div>
 
@@ -350,10 +350,10 @@
             // Show/Hide on date change
             dueDate.addEventListener('change', toggleInstallAmt);
 
-            // Restrict amount <= 2999
+            // Restrict amount <= 3999
             installAmt.addEventListener('input', function() {
-                if (this.value > 2999) {
-                    this.value = 2999;
+                if (this.value > 3999) {
+                    this.value = 3999;
                 }
             });
         });
