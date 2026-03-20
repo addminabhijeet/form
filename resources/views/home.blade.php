@@ -54,7 +54,7 @@
 
             <!-- Email Creation -->
             <div class="col-md-4">
-                <a href="{{ route('invoice.email') }}" class="card border-0 shadow-sm h-100 text-center p-3">
+                <a href="{{ route('email.form') }}" class="card border-0 shadow-sm h-100 text-center p-3">
                     <div class="card-body">
                         <div class="mb-3">
                             <i class="bi bi-envelope fs-1 text-success"></i>
