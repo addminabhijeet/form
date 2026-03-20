@@ -41,7 +41,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card p-4">
-                    <h3 class="card-title mb-4 text-center">Invoice Form</h3>
+                    <h3 class="card-title mb-4 text-center">Email Form</h3>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="text-center">
-        <a href="" class="btn btn-primary">Invoice List</a>
+        <a href="" class="btn btn-primary">Email List</a>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
