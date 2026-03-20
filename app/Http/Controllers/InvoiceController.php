@@ -11,9 +11,8 @@ class InvoiceController extends Controller
 {
     public function home()
     {
-        return $this->create();
+        return view('home');
     }
-
 
     public function list()
     {
@@ -40,6 +39,10 @@ class InvoiceController extends Controller
         return view('form', compact('invoiceNumber'));
     }
 
+    public function emailcreate()
+    {
+        return view('emailform');
+    }
 
     public function edit($id)
     {
