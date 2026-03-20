@@ -54,7 +54,8 @@
 
             <!-- Email Creation -->
             <div class="col-md-4">
-                <a href="{{ route('email.form') }}" class="card border-0 shadow-sm h-100 text-center p-3">
+                <a href="{{ route('email.form') }}"
+                    class="card border-0 shadow-sm h-100 text-center p-3 text-decoration-none text-dark hover-shadow">
                     <div class="card-body">
                         <div class="mb-3">
                             <i class="bi bi-envelope fs-1 text-success"></i>
@@ -67,9 +68,7 @@
                     </div>
                 </a>
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap Icons (optional but recommended) -->
