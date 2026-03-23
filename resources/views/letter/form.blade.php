@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="candidate_address" class="form-label">Candidate Address</label>
+                            <label for="candidate_address" class="form-label">Job Title</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
                                 placeholder="Enter address (max 3 lines)" style="resize:none; overflow-y:hidden;"
                                 oninput="
