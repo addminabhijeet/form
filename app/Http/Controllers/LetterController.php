@@ -35,6 +35,25 @@ class LetterController extends Controller
         return view('form', compact('letterNumber'));
     }
 
+    public function emailcreate()
+    {
+        $lastLetter = Letter::withTrashed()
+            ->where('letter_number', 'like', 'NYS_A%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        if ($lastLetter) {
+            $lastSerial = (int) substr($lastLetter->letter_number, 6);
+            $newSerial = str_pad($lastSerial + 1, 4, '0', STR_PAD_LEFT);
+        } else {
+            $newSerial = '0001';
+        }
+
+        $letterNumber = 'NYS_A' . $newSerial;
+
+        return view('form', compact('letterNumber'));
+    }
+
     public function letteremailcreate()
     {
         return view('emailform');
