@@ -10,53 +10,53 @@ use Illuminate\Validation\Rule;
 class LetterController extends Controller
 {
 
-    public function list()
+    public function letterlist()
     {
-        $invoices = Letter::orderBy('created_at', 'desc')->paginate(10);
-        return view('list', compact('invoices'));
+        $letters = Letter::orderBy('created_at', 'desc')->paginate(10);
+        return view('list', compact('letters'));
     }
 
-    public function create()
+    public function lettercreate()
     {
-        $lastInvoice = Letter::withTrashed()
-            ->where('invoice_number', 'like', 'NYS_A%')
+        $lastLetter = Letter::withTrashed()
+            ->where('letter_number', 'like', 'NYS_A%')
             ->orderBy('id', 'desc')
             ->first();
 
-        if ($lastInvoice) {
-            $lastSerial = (int) substr($lastInvoice->invoice_number, 6);
+        if ($lastLetter) {
+            $lastSerial = (int) substr($lastLetter->letter_number, 6);
             $newSerial = str_pad($lastSerial + 1, 4, '0', STR_PAD_LEFT);
         } else {
             $newSerial = '0001';
         }
 
-        $invoiceNumber = 'NYS_A' . $newSerial;
+        $letterNumber = 'NYS_A' . $newSerial;
 
-        return view('form', compact('invoiceNumber'));
+        return view('form', compact('letterNumber'));
     }
 
-    public function emailcreate()
+    public function letteremailcreate()
     {
         return view('emailform');
     }
 
-    public function edit($id)
+    public function letteredit($id)
     {
-        $invoice = Letter::findOrFail($id);
-        return view('form', compact('invoice'));
+        $letter = Letter::findOrFail($id);
+        return view('form', compact('letter'));
     }
 
-    public function store(Request $request)
+    public function letterstore(Request $request)
     {
         try {
             $data = $request->validate([
-                'invoice_number' => [
+                'letter_number' => [
                     'required',
                     'string',
-                    Rule::unique('invoices', 'invoice_number')->whereNull('deleted_at'),
+                    Rule::unique('letters', 'letter_number')->whereNull('deleted_at'),
                 ],
-                'invoice_date'       => 'required|date',
-                'due_date'           => 'date|after_or_equal:invoice_date',
+                'letter_date'       => 'required|date',
+                'due_date'           => 'date|after_or_equal:letter_date',
                 'candidate_name'     => 'required|string|max:255',
                 'candidate_email'    => 'required|email|max:255',
                 'candidate_mobile'   => 'required|string',
@@ -73,15 +73,15 @@ class LetterController extends Controller
         }
     }
 
-    private function generateInvoiceNumber()
+    private function lettergenerateLetterNumber()
     {
-        $lastInvoice = Letter::withTrashed()
-            ->where('invoice_number', 'like', 'NYS_A%')
+        $lastLetter = Letter::withTrashed()
+            ->where('letter_number', 'like', 'NYS_A%')
             ->orderBy('id', 'desc')
             ->first();
 
-        $lastNumber = $lastInvoice
-            ? intval(substr($lastInvoice->invoice_number, 5))
+        $lastNumber = $lastLetter
+            ? intval(substr($lastLetter->letter_number, 5))
             : 0;
 
         $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
@@ -89,21 +89,21 @@ class LetterController extends Controller
         return 'NYS_A' . $newNumber;
     }
 
-    public function checkEmail(Request $request)
+    public function lettercheckEmail(Request $request)
     {
         $request->validate([
             'email' => 'required|email'
         ]);
 
-        $invoice = Letter::where('candidate_email', $request->email)
+        $letter = Letter::where('candidate_email', $request->email)
             ->latest()
             ->first();
 
-        if ($invoice) {
+        if ($letter) {
             return response()->json([
                 'exists' => true,
                 'data' => [
-                    'id' => $invoice->id,
+                    'id' => $letter->id,
                 ]
             ]);
         }
@@ -111,20 +111,20 @@ class LetterController extends Controller
         return response()->json(['exists' => false]);
     }
 
-    public function update(Request $request, $id)
+    public function letterupdate(Request $request, $id)
     {
-        $invoice = Letter::findOrFail($id);
+        $letter = Letter::findOrFail($id);
 
         $data = $request->validate([
-            'invoice_number' => [
+            'letter_number' => [
                 'required',
                 'string',
-                Rule::unique('invoices', 'invoice_number')
-                    ->ignore($invoice->id)
+                Rule::unique('letters', 'letter_number')
+                    ->ignore($letter->id)
                     ->whereNull('deleted_at'),
             ],
-            'invoice_date'       => 'required|date',
-            'due_date'           => 'date|after_or_equal:invoice_date',
+            'letter_date'       => 'required|date',
+            'due_date'           => 'date|after_or_equal:letter_date',
             'candidate_name'     => 'required|string|max:255',
             'candidate_email'    => 'required|email|max:255',
             'candidate_mobile'   => 'required|string',
@@ -134,46 +134,46 @@ class LetterController extends Controller
         ]);
 
 
-        $invoice->update($data);
+        $letter->update($data);
 
-        return redirect()->route('invoice.list')->with('success', 'Letter updated successfully!');
+        return redirect()->route('letter.list')->with('success', 'Letter updated successfully!');
     }
 
-    public function destroy($id)
+    public function letterdestroy($id)
     {
-        $invoice = Letter::findOrFail($id);
-        $invoice->delete();
+        $letter = Letter::findOrFail($id);
+        $letter->delete();
 
         return redirect()->back()->with('success', 'Letter deleted successfully!');
     }
 
-    public function pdf($id)
+    public function letterpdf($id)
     {
-        $invoice = Letter::findOrFail($id);
+        $letter = Letter::findOrFail($id);
 
-        return view('pdf.invoice', compact('invoice'));
+        return view('pdf.letter', compact('letter'));
     }
 
-    public function pdfone($id)
+    public function letterpdfone($id)
     {
-        $invoice = Letter::findOrFail($id);
+        $letter = Letter::findOrFail($id);
 
-        return view('pdf.invoiceone', compact('invoice'));
+        return view('pdf.letterone', compact('letter'));
     }
 
-    public function pdftwo($id)
+    public function letterpdftwo($id)
     {
-        $invoice = Letter::findOrFail($id);
+        $letter = Letter::findOrFail($id);
 
-        return view('pdf.invoicetwo', compact('invoice'));
+        return view('pdf.lettertwo', compact('letter'));
     }
 
-    public function download($id)
+    public function letterdownload($id)
     {
-        $invoice = Letter::findOrFail($id);
+        $letter = Letter::findOrFail($id);
 
-        $pdf = Pdf::loadView('invoice.pdf', compact('invoice'));
+        $pdf = Pdf::loadView('letter.pdf', compact('letter'));
 
-        return $pdf->download('invoice_' . $invoice->invoice_number . '.pdf');
+        return $pdf->download('letter_' . $letter->letter_number . '.pdf');
     }
 }
