@@ -144,9 +144,9 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAACzgAA0AAAA
 <span class="t s0" style="left:72px;bottom:380px;letter-spacing:-0.09px;">validation of your credentials. </span>
 <span class="t s0" style="left:72px;bottom:334px;letter-spacing:-0.09px;word-spacing:1.63px;">We are confident that your integration into </span><span class="t s1" style="left:426px;bottom:334px;letter-spacing:-0.11px;word-spacing:1.63px;">The Tech System </span><span class="t s0" style="left:581px;bottom:334px;letter-spacing:-0.09px;word-spacing:1.63px;">will be the catalyst for the next </span>
 <span class="t s0" style="left:72px;bottom:311px;letter-spacing:-0.1px;word-spacing:4.06px;">stage of your career. Please signify your acceptance by signing and returning this letter by </span>
-<span class="t s1" style="left:72px;bottom:288px;letter-spacing:-0.1px;">{{ \Carbon\Carbon::parse($letter->due_date)->format('m-d-Y') }}</span><span class="t s0" style="left:122px;bottom:288px;">. </span>
+<span class="t s1" style="left:72px;bottom:288px;letter-spacing:-0.1px;">{{ \Carbon\Carbon::parse($letter->due_date)->format('m/d/Y') }}</span><span class="t s0" style="left:122px;bottom:288px;">. </span>
 <span class="t s0" style="left:72px;bottom:242px;letter-spacing:-0.1px;">Welcome to the team. We look forward to achieving great milestones together. </span>
-<span class="t s2" style="left:679px;bottom:958px;letter-spacing:0.17px;">Date: {{ \Carbon\Carbon::parse($letter->letter_date)->format('m-d-Y') }}</span>
+<span class="t s2" style="left:679px;bottom:958px;letter-spacing:0.17px;">Date: {{ \Carbon\Carbon::parse($letter->letter_date)->format('m/d/Y') }}</span>
 <span class="t s2" style="left:72px;bottom:182px;letter-spacing:0.19px;">Warm regards, </span>
 <span class="t s2" style="left:76px;bottom:154px;letter-spacing:0.17px;">The Tech System Inc. </span>
 <span class="t s2" style="left:72px;bottom:936px;letter-spacing:0.17px;">Dear {{ $letter->candidate_name }}, </span>
