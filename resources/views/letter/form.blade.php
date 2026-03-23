@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="candidate_address" class="form-label">Job Title</label>
+                            <label for="candidate_address" class="form-label">Job Title (max 60 letter)</label>
                             <input type="text" class="form-control" id="candidate_address" name="candidate_address"
                                 placeholder="Enter Job Title (max 3 lines equivalent)" maxlength="63"
                                 oninput="
