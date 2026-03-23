@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LetterController;
 
 Route::get('/', [InvoiceController::class, 'home'])->name('home');
 Route::get('/email-create', [InvoiceController::class, 'emailcreate'])->name('email.form');
@@ -17,3 +18,15 @@ Route::delete('/invoice-delete/{id}', [InvoiceController::class, 'destroy'])->na
 Route::get('/invoice-download/{id}', [InvoiceController::class, 'download'])->name('invoice.download');
 Route::get('/invoice/check-email', [InvoiceController::class, 'checkEmail'])->name('invoice.checkEmail');
 
+Route::get('/email-create', [LetterController::class, 'emailcreate'])->name('letter.form');
+Route::get('/letter-create', [LetterController::class, 'create'])->name('letter.form');
+Route::post('/letter-store', [LetterController::class, 'store'])->name('letter.submit');
+Route::get('/letter-list', [LetterController::class, 'list'])->name('letter.list');
+Route::get('/letter-pdf/{id}', [LetterController::class, 'pdf'])->name('letter.pdf');
+Route::get('/letter-pdf-one/{id}', [LetterController::class, 'pdfone'])->name('letterone.pdf');
+Route::get('/letter-pdf-two/{id}', [LetterController::class, 'pdftwo'])->name('lettertwo.pdf');
+Route::get('/letter/{id}/edit', [LetterController::class, 'edit'])->name('letter.edit');
+Route::put('/letter-update/{id}', [LetterController::class, 'update'])->name('letter.update');
+Route::delete('/letter-delete/{id}', [LetterController::class, 'destroy'])->name('letter.delete');
+Route::get('/letter-download/{id}', [LetterController::class, 'download'])->name('letter.download');
+Route::get('/letter/check-email', [LetterController::class, 'checkEmail'])->name('letter.checkEmail');

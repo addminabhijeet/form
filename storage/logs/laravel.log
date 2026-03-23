@@ -189,3 +189,7 @@
 #31 D:/form/artisan(16): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
 #32 {main}
 "} 
+[2026-03-23 18:15:43] local.ERROR: Cannot use App\Http\Controllers\InvoiceController as InvoiceController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\InvoiceController as InvoiceController because the name is already in use at E:/form/routes/web.php:5)
+[stacktrace]
+#0 {main}
+"} 
