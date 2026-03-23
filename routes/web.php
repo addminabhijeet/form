@@ -18,7 +18,6 @@ Route::delete('/invoice-delete/{id}', [InvoiceController::class, 'destroy'])->na
 Route::get('/invoice-download/{id}', [InvoiceController::class, 'download'])->name('invoice.download');
 Route::get('/invoice/check-email', [InvoiceController::class, 'checkEmail'])->name('invoice.checkEmail');
 
-Route::get('/email-create', [LetterController::class, 'emailcreate'])->name('letter.form');
 Route::get('/letter-create', [LetterController::class, 'lettercreate'])->name('letter.form');
 Route::post('/letter-store', [LetterController::class, 'letterstore'])->name('letter.submit');
 Route::get('/letter-list', [LetterController::class, 'letterlist'])->name('letter.list');

@@ -27,7 +27,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>Letter List</h3>
-                <a href="{{ route('home') }}" class="btn btn-primary">Create Letter</a>
+                <a href="{{ route('letter.form') }}" class="btn btn-primary">Create Letter</a>
             </div>
 
 
