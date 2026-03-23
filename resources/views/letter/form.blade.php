@@ -119,10 +119,10 @@
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Job Title</label>
                             <input type="text" class="form-control" id="candidate_address" name="candidate_address"
-                                placeholder="Enter Job Title (max 3 lines equivalent)" maxlength="108"
+                                placeholder="Enter Job Title (max 3 lines equivalent)" maxlength="63"
                                 oninput="
-                                    if(this.value.length > 108){
-                                        this.value = this.value.substring(0, 108);
+                                    if(this.value.length > 63){
+                                        this.value = this.value.substring(0, 63);
                                     }
                                 "
                                 required value="{{ old('candidate_address', $letter->candidate_address ?? '') }}">
