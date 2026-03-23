@@ -5,7 +5,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LetterController;
 
 Route::get('/', [InvoiceController::class, 'home'])->name('home');
-Route::get('/email-create', [InvoiceController::class, 'emailcreate'])->name('email.form');
+
 Route::get('/invoice-create', [InvoiceController::class, 'create'])->name('invoice.form');
 Route::post('/invoice-store', [InvoiceController::class, 'store'])->name('invoice.submit');
 Route::get('/invoice-list', [InvoiceController::class, 'list'])->name('invoice.list');

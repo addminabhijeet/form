@@ -39,11 +39,6 @@ class InvoiceController extends Controller
         return view('form', compact('invoiceNumber'));
     }
 
-    public function emailcreate()
-    {
-        return view('emailform');
-    }
-
     public function edit($id)
     {
         $invoice = Invoice::findOrFail($id);

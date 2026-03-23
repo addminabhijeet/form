@@ -54,7 +54,7 @@
 
             <!-- Email Creation -->
             <div class="col-md-4">
-                <a href="{{ route('email.form') }}"
+                <a href="{{ route('letter.form') }}"
                     class="card border-0 shadow-sm h-100 text-center p-3 text-decoration-none text-dark hover-shadow">
                     <div class="card-body">
                         <div class="mb-3">
