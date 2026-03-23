@@ -76,13 +76,6 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="letter_number" class="form-label">Letter Number</label>
-                                <input type="text" class="form-control" id="letter_number" name="letter_number"
-                                    value="{{ old('letter_number', $letter->letter_number ?? $letterNumber) }}"
-                                    placeholder="Auto-generated Letter number" readonly>
-                            </div>
-
-                            <div class="col-md-6">
                                 <label for="letter_date" class="form-label">Letter Date</label>
                                 <input type="date" class="form-control" id="letter_date" name="letter_date"
                                     value="{{ old('letter_date', $letter->letter_date ?? '') }}"
@@ -92,52 +85,13 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="candidate_mobile" class="form-label">Candidate Mobile</label><br>
-                                <input type="text" class="form-control" id="candidate_mobile" name="candidate_mobile"
-                                    maxlength="20" inputmode="numeric"
-                                    value="{{ old('candidate_mobile', $letter->candidate_mobile ?? '') }}"
-                                    placeholder="Enter mobile number" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="package" class="form-label">Package</label>
-                                <select class="form-select" id="package" name="package" required>
-                                    <option value="" disabled>Select Package</option>
-
-                                    <option value="career_starter"
-                                        {{ old('package', $letter->package ?? '') == 'career_starter' ? 'selected' : '' }}>
-                                        Career Starter
-                                    </option>
-
-                                    <option value="growth_package"
-                                        {{ old('package', $letter->package ?? '') == 'growth_package' ? 'selected' : '' }}>
-                                        Growth Package
-                                    </option>
-
-                                    <option value="career_acceleration"
-                                        {{ old('package', $letter->package ?? '') == 'career_acceleration' ? 'selected' : '' }}>
-                                        Career Acceleration
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="due_date" class="form-label">Due Date</label>
+                                <label for="due_date" class="form-label">Acceptance TAT</label>
                                 <input type="date" class="form-control" id="due_date" name="due_date"
                                     value="{{ old('due_date', $letter->due_date ?? '') }}"
                                     placeholder="Select due date" required>
                             </div>
 
-                            <div class="col-md-6" id="installAmtWrapper" style="display:none;">
-                                <label for="install_amt" class="form-label">Installment Amount</label>
-                                <input type="number" class="form-control" id="install_amt" name="install_amt"
-                                    value="{{ old('install_amt', $letter->install_amt ?? '') }}"
-                                    placeholder="Enter Paid Amount" max="3999" required>
-                            </div>
                         </div>
-
-
 
                         <input type="hidden" id="candidate_name" name="candidate_name"
                             value="{{ old('candidate_name', $letter->candidate_name ?? '') }}">
@@ -162,15 +116,6 @@
                             </div>
                         </div>
 
-
-                        <div class="mb-3">
-                            <label for="candidate_email" class="form-label">Candidate Email</label>
-                            <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-                                value="{{ old('candidate_email', $letter->candidate_email ?? '') }}"
-                                placeholder="example@email.com" required>
-                            <small id="emailNotice" class="form-text text-success mt-1"></small>
-                        </div>
-
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Candidate Address</label>
                             <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
@@ -189,8 +134,6 @@
                                 this.value = lines.join('\n');"
                                 required>{{ old('candidate_address', $letter->candidate_address ?? '') }}</textarea>
                         </div>
-
-
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">

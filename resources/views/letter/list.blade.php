@@ -35,11 +35,8 @@
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
-                        <th>Letter No</th>
                         <th>Date</th>
                         <th>Candidate</th>
-                        <th>Email</th>
-                        <th>Package</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -47,21 +44,15 @@
                     @forelse ($letters as $letter)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $letter->letter_number }}</td>
                             <td>{{ $letter->letter_date }}</td>
                             <td>{{ $letter->candidate_name }}</td>
-                            <td>{{ $letter->candidate_email }}</td>
-                            <td>{{ ucfirst(str_replace('_', ' ', $letter->package)) }}</td>
                             <td>
                                 <a href="{{ route('letterone.pdf', $letter->id) }}" class="btn btn-sm btn-success">
                                     View
                                 </a>
-
-
                                 <a href="{{ route('letter.edit', $letter->id) }}" class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
-
                                 <form action="{{ route('letter.delete', $letter->id) }}" method="POST"
                                     class="d-inline"
                                     onsubmit="return confirm('Are you sure you want to delete this letter?')">
