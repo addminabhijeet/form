@@ -71,7 +71,7 @@
     </div>
 
     <div class="text-center">
-        <a href="" class="btn btn-primary">Email List</a>
+        <a href="{{ route('letter.list') }}" class="btn btn-primary">Email List</a>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
