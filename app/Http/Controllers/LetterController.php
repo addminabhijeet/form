@@ -55,22 +55,6 @@ class LetterController extends Controller
         }
     }
 
-    private function lettergenerateLetterNumber()
-    {
-        $lastLetter = Letter::withTrashed()
-            ->where('letter_number', 'like', 'NYS_A%')
-            ->orderBy('id', 'desc')
-            ->first();
-
-        $lastNumber = $lastLetter
-            ? intval(substr($lastLetter->letter_number, 5))
-            : 0;
-
-        $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
-
-        return 'NYS_A' . $newNumber;
-    }
-
     public function lettercheckEmail(Request $request)
     {
         $request->validate([
