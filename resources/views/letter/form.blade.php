@@ -87,8 +87,8 @@
                             <div class="col-md-6">
                                 <label for="due_date" class="form-label">Acceptance TAT</label>
                                 <input type="date" class="form-control" id="due_date" name="due_date"
-                                    value="{{ old('due_date', $letter->due_date ?? '') }}"
-                                    placeholder="Select due date" required>
+                                    value="{{ old('due_date', $letter->due_date ?? '') }}" placeholder="Select due date"
+                                    required>
                             </div>
 
                         </div>
@@ -118,21 +118,14 @@
 
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Job Title</label>
-                            <textarea class="form-control" id="candidate_address" name="candidate_address" rows="3"
-                                placeholder="Enter Job Title (max 3 lines)" style="resize:none; overflow-y:hidden;"
+                            <input type="text" class="form-control" id="candidate_address" name="candidate_address"
+                                placeholder="Enter Job Title (max 3 lines equivalent)" maxlength="108"
                                 oninput="
-                                this.style.height='';
-                                this.style.height=this.scrollHeight+'px';
-
-                                let lines = this.value.split('\n');
-
-                                if (lines.length > 3) {
-                                    lines = lines.slice(0, 3);
-                                }
-
-                                lines = lines.map(line => line.substring(0, 36));
-                                this.value = lines.join('\n');"
-                                required>{{ old('candidate_address', $letter->candidate_address ?? '') }}</textarea>
+                                    if(this.value.length > 108){
+                                        this.value = this.value.substring(0, 108);
+                                    }
+                                "
+                                required value="{{ old('candidate_address', $letter->candidate_address ?? '') }}">
                         </div>
 
                         <div class="text-center">
