@@ -119,7 +119,7 @@
                         <div class="mb-3">
                             <label for="candidate_address" class="form-label">Job Title (max 60 letter)</label>
                             <input type="text" class="form-control" id="candidate_address" name="candidate_address"
-                                placeholder="Enter Job Title (max 3 lines equivalent)" maxlength="63"
+                                placeholder="Enter Job Title (max 60 letter)" maxlength="63"
                                 oninput="
                                     if(this.value.length > 63){
                                         this.value = this.value.substring(0, 63);
