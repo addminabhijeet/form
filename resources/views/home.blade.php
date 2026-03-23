@@ -52,7 +52,7 @@
                 </a>
             </div>
 
-            <!-- Email Creation -->
+            <!-- Selection Letter -->
             <div class="col-md-4">
                 <a href="{{ route('letter.form') }}"
                     class="card border-0 shadow-sm h-100 text-center p-3 text-decoration-none text-dark hover-shadow">
@@ -60,9 +60,9 @@
                         <div class="mb-3">
                             <i class="bi bi-envelope fs-1 text-success"></i>
                         </div>
-                        <h5 class="card-title fw-semibold">Email Creation</h5>
+                        <h5 class="card-title fw-semibold">Selection Letter</h5>
                         <p class="text-muted small">
-                            Create email for Gmail Body.
+                            Create Selection Letter.
                         </p>
                         <span class="btn btn-success btn-sm">Email</span>
                     </div>
