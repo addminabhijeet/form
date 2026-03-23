@@ -54,11 +54,9 @@
                             <td>{{ ucfirst(str_replace('_', ' ', $letter->package)) }}</td>
                             <td>
                                 <a href="{{ route('letterone.pdf', $letter->id) }}" class="btn btn-sm btn-success">
-                                    View One
+                                    View
                                 </a>
-                                <a href="{{ route('lettertwo.pdf', $letter->id) }}" class="btn btn-sm btn-success">
-                                    View Two
-                                </a>
+
 
                                 <a href="{{ route('letter.edit', $letter->id) }}" class="btn btn-sm btn-warning">
                                     Edit
