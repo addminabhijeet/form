@@ -13,7 +13,7 @@ class LetterController extends Controller
     public function letterlist()
     {
         $letters = Letter::orderBy('created_at', 'desc')->paginate(10);
-        return view('list', compact('letters'));
+        return view('letter.list', compact('letters'));
     }
 
     public function lettercreate()
@@ -32,7 +32,7 @@ class LetterController extends Controller
 
         $letterNumber = 'NYS_A' . $newSerial;
 
-        return view('form', compact('letterNumber'));
+        return view('letter.form', compact('letterNumber'));
     }
 
     public function emailcreate()
@@ -51,18 +51,18 @@ class LetterController extends Controller
 
         $letterNumber = 'NYS_A' . $newSerial;
 
-        return view('form', compact('letterNumber'));
+        return view('letter.form', compact('letterNumber'));
     }
 
     public function letteremailcreate()
     {
-        return view('emailform');
+        return view('letter.emailform');
     }
 
     public function letteredit($id)
     {
         $letter = Letter::findOrFail($id);
-        return view('form', compact('letter'));
+        return view('letter.form', compact('letter'));
     }
 
     public function letterstore(Request $request)
@@ -170,21 +170,21 @@ class LetterController extends Controller
     {
         $letter = Letter::findOrFail($id);
 
-        return view('pdf.letter', compact('letter'));
+        return view('letter.pdf', compact('letter'));
     }
 
     public function letterpdfone($id)
     {
         $letter = Letter::findOrFail($id);
 
-        return view('pdf.letterone', compact('letter'));
+        return view('letter.pdfone', compact('letter'));
     }
 
     public function letterpdftwo($id)
     {
         $letter = Letter::findOrFail($id);
 
-        return view('pdf.lettertwo', compact('letter'));
+        return view('letter.pdftwo', compact('letter'));
     }
 
     public function letterdownload($id)
