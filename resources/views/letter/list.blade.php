@@ -26,8 +26,8 @@
         <table class="table table-bordered table-hover align-middle">
 
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3>Invoice List</h3>
-                <a href="{{ route('home') }}" class="btn btn-primary">Create Invoice</a>
+                <h3>Letter List</h3>
+                <a href="{{ route('home') }}" class="btn btn-primary">Create Letter</a>
             </div>
 
 
@@ -35,7 +35,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
-                        <th>Invoice No</th>
+                        <th>Letter No</th>
                         <th>Date</th>
                         <th>Candidate</th>
                         <th>Email</th>
@@ -44,29 +44,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($invoices as $invoice)
+                    @forelse ($letters as $letter)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $invoice->invoice_number }}</td>
-                            <td>{{ $invoice->invoice_date }}</td>
-                            <td>{{ $invoice->candidate_name }}</td>
-                            <td>{{ $invoice->candidate_email }}</td>
-                            <td>{{ ucfirst(str_replace('_', ' ', $invoice->package)) }}</td>
+                            <td>{{ $letter->letter_number }}</td>
+                            <td>{{ $letter->letter_date }}</td>
+                            <td>{{ $letter->candidate_name }}</td>
+                            <td>{{ $letter->candidate_email }}</td>
+                            <td>{{ ucfirst(str_replace('_', ' ', $letter->package)) }}</td>
                             <td>
-                                <a href="{{ route('invoiceone.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
+                                <a href="{{ route('letterone.pdf', $letter->id) }}" class="btn btn-sm btn-success">
                                     View One
                                 </a>
-                                <a href="{{ route('invoicetwo.pdf', $invoice->id) }}" class="btn btn-sm btn-success">
+                                <a href="{{ route('lettertwo.pdf', $letter->id) }}" class="btn btn-sm btn-success">
                                     View Two
                                 </a>
 
-                                <a href="{{ route('invoice.edit', $invoice->id) }}" class="btn btn-sm btn-warning">
+                                <a href="{{ route('letter.edit', $letter->id) }}" class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
 
-                                <form action="{{ route('invoice.delete', $invoice->id) }}" method="POST"
+                                <form action="{{ route('letter.delete', $letter->id) }}" method="POST"
                                     class="d-inline"
-                                    onsubmit="return confirm('Are you sure you want to delete this invoice?')">
+                                    onsubmit="return confirm('Are you sure you want to delete this letter?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger">
@@ -77,7 +77,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center">No invoices found</td>
+                            <td colspan="7" class="text-center">No letters found</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -85,7 +85,7 @@
 
             <!-- Pagination -->
             <div class="mt-3">
-                {{ $invoices->links('pagination::bootstrap-5') }}
+                {{ $letters->links('pagination::bootstrap-5') }}
             </div>
     </div>
 
