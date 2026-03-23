@@ -127,9 +127,10 @@ src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAACzgAA0AAAA
 <span class="t s0" style="left:72px;bottom:884px;letter-spacing:-0.11px;word-spacing:20px;">background, we are pleased to formally select you for the position of </span>
 <span class="t s2" style="left:72px;bottom:861px;letter-spacing:-0.1px;">
     {{ $letter->candidate_address }}
-    <span style="font-family: 'Arial', sans-serif; font-weight: 400 !important; font-style: normal !important;">
+    <span style="font-weight: 100 !important; font-style: normal !important;">
         at The Tech System.
     </span>
+</span>
 </span></span><span class="t s0" style="left:72px;bottom:815px;letter-spacing:-0.09px;word-spacing:0.32px;">Your expertise has been identified as a high-value asset for our upcoming global project pipeline. </span>
 <span class="t s0" style="left:72px;bottom:792px;letter-spacing:-0.09px;">By accepting this offer, you are officially integrated into our professional talent roster. </span>
 <span class="t s1" style="left:72px;bottom:746px;letter-spacing:-0.11px;">1. Engagement Model &amp; Compensation </span>
