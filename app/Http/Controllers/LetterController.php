@@ -41,19 +41,10 @@ class LetterController extends Controller
     {
         try {
             $data = $request->validate([
-                'letter_number' => [
-                    'required',
-                    'string',
-                    Rule::unique('letters', 'letter_number')->whereNull('deleted_at'),
-                ],
                 'letter_date'       => 'required|date',
                 'due_date'           => 'date|after_or_equal:letter_date',
                 'candidate_name'     => 'required|string|max:255',
-                'candidate_email'    => 'required|email|max:255',
-                'candidate_mobile'   => 'required|string',
-                'install_amt' => 'nullable|numeric|max:4999',
                 'candidate_address'  => 'required|string',
-                'package'            => 'required|in:career_starter,growth_package,career_acceleration',
             ]);
 
             Letter::create($data);
@@ -107,21 +98,10 @@ class LetterController extends Controller
         $letter = Letter::findOrFail($id);
 
         $data = $request->validate([
-            'letter_number' => [
-                'required',
-                'string',
-                Rule::unique('letters', 'letter_number')
-                    ->ignore($letter->id)
-                    ->whereNull('deleted_at'),
-            ],
             'letter_date'       => 'required|date',
             'due_date'           => 'date|after_or_equal:letter_date',
             'candidate_name'     => 'required|string|max:255',
-            'candidate_email'    => 'required|email|max:255',
-            'candidate_mobile'   => 'required|string',
             'candidate_address'  => 'required|string',
-            'install_amt' => 'nullable|numeric|max:4999',
-            'package'            => 'required|in:career_starter,growth_package,career_acceleration',
         ]);
 
 
