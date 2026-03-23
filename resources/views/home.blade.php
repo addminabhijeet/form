@@ -64,7 +64,7 @@
                         <p class="text-muted small">
                             Create Selection Letter.
                         </p>
-                        <span class="btn btn-success btn-sm">Email</span>
+                        <span class="btn btn-success btn-sm">Letter</span>
                     </div>
                 </a>
             </div>
